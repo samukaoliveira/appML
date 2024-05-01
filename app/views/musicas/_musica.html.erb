@@ -34,9 +34,18 @@
     <%= musica.obs %>
   </p>
 
-  <p>
-    <strong>Versões:</strong>
-    <%= carregar_versoes(musica) %>
-  </p>
-
+  
+  <table class="table">
+    <tr>
+    <th>Versão</th>
+    <th>Link do Youtube</th>
+    </tr>
+    <% musica.versao.each do | versao | %>
+    <tr>
+    <td><%= versao.nome %></td>
+    <td><%= versao.link_youtube %></td>
+    <td><%= link_to "Editar", versao  %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

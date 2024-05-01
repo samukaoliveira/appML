@@ -1,8 +1,4 @@
 <div id="<%= dom_id ministerio %>">
-  <p>
-    <strong>Membro:</strong>
-    <%= ministerio.membro %>
-  </p>
 
   <p>
     <strong>Lider:</strong>
@@ -18,5 +14,19 @@
     <strong>Administrador:</strong>
     <%= ministerio.administrador %>
   </p>
+
+ <table class="table">
+    <tr>
+    <th>Membros</th>
+    <th>Função</th>
+    </tr>
+    <% ministerio.includes(:membro).each do | membro | %>
+    <tr>
+    <td><%= membro.nome %></td>
+    <td><%= membro.tipo_skill %></td>
+    <td><%= link_to "Editar", membro  %></td>
+    </tr>
+    <% end %>
+  </table>
 
 </div>

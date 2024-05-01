@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_01_150756) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,8 +36,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_150756) do
     t.index ["musica_id"], name: "index_escalas_on_musica_id"
   end
 
+  create_table "membros", force: :cascade do |t|
+    t.bigint "ministerio_id", null: false
+    t.bigint "usuario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ministerio_id"], name: "index_membros_on_ministerio_id"
+    t.index ["usuario_id"], name: "index_membros_on_usuario_id"
+  end
+
   create_table "ministerios", force: :cascade do |t|
-    t.integer "membro"
     t.integer "lider"
     t.string "nome"
     t.integer "administrador"
@@ -98,5 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_150756) do
   end
 
   add_foreign_key "escalas", "musicas"
+  add_foreign_key "membros", "ministerios"
+  add_foreign_key "membros", "usuarios"
   add_foreign_key "usuarios", "tipo_skills"
 end

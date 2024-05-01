@@ -2,6 +2,11 @@
 
 <%= render @ministerio %>
 
+
+<div>
+  <%= link_to "Adicionar Membros", new_membro_path(id_ministerio: @ministerio) %>
+</div>
+
 <div>
   <%= link_to "Edit this ministerio", edit_ministerio_path(@ministerio) %> |
   <%= link_to "Back to ministerios", ministerios_path %>

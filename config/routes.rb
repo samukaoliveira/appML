@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :membros
   resources :escalas
   resources :musicas
   resources :versaos

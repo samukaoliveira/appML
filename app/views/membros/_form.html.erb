@@ -1,0 +1,33 @@
+<%= form_with(model: membro) do |form| %>
+  <% if membro.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(membro.errors.count, "error") %> prohibited this membro from being saved:</h2>
+
+      <ul>
+        <% membro.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div style="display: none;">
+  <%= form.label :ministerio_id, style: "display: block" %>
+  <%= form.hidden_field :ministerio_id, value: params[:id_ministerio] %>
+</div>
+
+  <div>
+    <%= form.label :ministerio_id, style: "display: block" %>
+    <%= form.text_field :ministerio_id, value: id_do_ministerio(params[:id_ministerio]), disabled: true, class: "disable" %>
+  </div>
+
+  <div>
+    <%= form.label :usuario_id, style: "display: block" %>
+    <%= form.select :usuario_id, value: opcoes_de_membro %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
