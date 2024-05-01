@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @versao %>
+
+<div>
+  <%= link_to "Edit this versao", edit_versao_path(@versao) %> |
+  <%= link_to "Back to versaos", versaos_path %>
+
+  <%= button_to "Destroy this versao", @versao, method: :delete %>
+</div>

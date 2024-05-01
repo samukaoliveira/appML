@@ -1,0 +1,42 @@
+<div id="<%= dom_id musica %>">
+  <p>
+    <strong>Nome:</strong>
+    <%= musica.nome %>
+  </p>
+
+  <p>
+    <strong>Interprete:</strong>
+    <%= musica.interprete %>
+  </p>
+
+  <p>
+    <strong>Tom original:</strong>
+    <%= musica.tom_original %>
+  </p>
+
+  <p>
+    <strong>Ultimo tom tocado:</strong>
+    <%= musica.ultimo_tom_tocado %>
+  </p>
+
+  <p>
+    <strong>Bmp original:</strong>
+    <%= musica.bmp_original %>
+  </p>
+
+  <p>
+    <strong>Ultimo bpm tocado:</strong>
+    <%= musica.ultimo_bpm_tocado %>
+  </p>
+
+  <p>
+    <strong>Obs:</strong>
+    <%= musica.obs %>
+  </p>
+
+  <p>
+    <strong>Versões:</strong>
+    <%= carregar_versoes(musica) %>
+  </p>
+
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  interprete: MyString
+  tom_original: MyString
+  ultimo_tom_tocado: MyString
+  bmp_original: 1
+  ultimo_bpm_tocado: 1
+  obs: MyString
+  versao: one
+
+two:
+  nome: MyString
+  interprete: MyString
+  tom_original: MyString
+  ultimo_tom_tocado: MyString
+  bmp_original: 1
+  ultimo_bpm_tocado: 1
+  obs: MyString
+  versao: two

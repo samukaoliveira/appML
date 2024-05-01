@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tipo skills</h1>
+
+<div id="tipo_skills">
+  <% @tipo_skills.each do |tipo_skill| %>
+    <%= render tipo_skill %>
+    <p>
+      <%= link_to "Show this tipo skill", tipo_skill %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tipo skill", new_tipo_skill_path %>

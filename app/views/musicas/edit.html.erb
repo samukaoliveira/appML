@@ -1,0 +1,13 @@
+<h1>Editing musica</h1>
+
+<%= render "form", musica: @musica %>
+
+<br>
+<div>
+  <%= link_to "Adicionar Versão", new_musica_versao_path(@musica) %>
+</div>
+
+<div>
+  <%= link_to "Show this musica", @musica %> |
+  <%= link_to "Back to musicas", musicas_path %>
+</div>

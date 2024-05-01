@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2024-05-01
+  hora: 2024-05-01 11:05:04
+  nome: MyString
+  musica: one
+  baterista: MyString
+  baixista: MyString
+  tecladista: MyString
+  vocalista: MyString
+  vionolista: MyString
+  guitarrista: MyString
+  outros: MyString
+  obs: MyString
+
+two:
+  data: 2024-05-01
+  hora: 2024-05-01 11:05:04
+  nome: MyString
+  musica: two
+  baterista: MyString
+  baixista: MyString
+  tecladista: MyString
+  vocalista: MyString
+  vionolista: MyString
+  guitarrista: MyString
+  outros: MyString
+  obs: MyString

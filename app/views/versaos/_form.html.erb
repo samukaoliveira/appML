@@ -1,0 +1,37 @@
+<%= form_with(model: versao) do |form| %>
+  <% if versao.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(versao.errors.count, "error") %> prohibited this versao from being saved:</h2>
+
+      <ul>
+        <% versao.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div style="display: none;">
+  <%= form.label :musica_id, style: "display: block" %>
+  <%= form.hidden_field :musica_id, value: params[:musica_id] %>
+</div>
+
+  <div>
+    <%= form.label :musica_id, style: "display: block" %>
+    <%= form.text_field :musica_id, value: nome_da_musica(params[:musica_id]), disabled: true, class: "disable" %>
+  </div>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :link_youtube, style: "display: block" %>
+    <%= form.text_field :link_youtube %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

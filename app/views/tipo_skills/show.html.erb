@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tipo_skill %>
+
+<div>
+  <%= link_to "Edit this tipo skill", edit_tipo_skill_path(@tipo_skill) %> |
+  <%= link_to "Back to tipo skills", tipo_skills_path %>
+
+  <%= button_to "Destroy this tipo skill", @tipo_skill, method: :delete %>
+</div>

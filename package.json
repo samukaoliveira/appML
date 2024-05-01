@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "private": "true",
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "node": "^22.0.0"
+  },
+  "scripts": {
+    "build:css": "node app/assets/javascript/esbuild.config.js"
+  }
+}

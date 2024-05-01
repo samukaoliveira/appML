@@ -1,0 +1,2 @@
+class Ministerio < ApplicationRecord
+end

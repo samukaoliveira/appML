@@ -1,0 +1,2 @@
+class TipoSkill < ApplicationRecord
+end

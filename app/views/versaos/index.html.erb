@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Versaos</h1>
+
+<div id="versaos">
+  <% @versaos.each do |versao| %>
+    <%= render versao %>
+    <p>
+      <%= link_to "Show this versao", versao %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New versao", new_versao_path %>

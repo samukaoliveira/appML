@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Escalas</h1>
+
+<div id="escalas">
+  <% @escalas.each do |escala| %>
+    <%= render escala %>
+    <p>
+      <%= link_to "Show this escala", escala %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New escala", new_escala_path %>

@@ -1,0 +1,77 @@
+<%= form_with(model: escala) do |form| %>
+  <% if escala.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(escala.errors.count, "error") %> prohibited this escala from being saved:</h2>
+
+      <ul>
+        <% escala.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :data, style: "display: block" %>
+    <%= form.date_field :data %>
+  </div>
+
+  <div>
+    <%= form.label :hora, style: "display: block" %>
+    <%= form.time_field :hora %>
+  </div>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :musica_id, style: "display: block" %>
+    <%= form.text_field :musica_id %>
+  </div>
+
+  <div>
+    <%= form.label :baterista, style: "display: block" %>
+    <%= form.text_field :baterista %>
+  </div>
+
+  <div>
+    <%= form.label :baixista, style: "display: block" %>
+    <%= form.text_field :baixista %>
+  </div>
+
+  <div>
+    <%= form.label :tecladista, style: "display: block" %>
+    <%= form.text_field :tecladista %>
+  </div>
+
+  <div>
+    <%= form.label :vocalista, style: "display: block" %>
+    <%= form.text_field :vocalista %>
+  </div>
+
+  <div>
+    <%= form.label :vionolista, style: "display: block" %>
+    <%= form.text_field :vionolista %>
+  </div>
+
+  <div>
+    <%= form.label :guitarrista, style: "display: block" %>
+    <%= form.text_field :guitarrista %>
+  </div>
+
+  <div>
+    <%= form.label :outros, style: "display: block" %>
+    <%= form.text_field :outros %>
+  </div>
+
+  <div>
+    <%= form.label :obs, style: "display: block" %>
+    <%= form.text_field :obs %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

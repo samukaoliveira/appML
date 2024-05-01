@@ -1,0 +1,53 @@
+<%= form_with(model: musica) do |form| %>
+  <% if musica.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(musica.errors.count, "error") %> prohibited this musica from being saved:</h2>
+
+      <ul>
+        <% musica.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :interprete, style: "display: block" %>
+    <%= form.text_field :interprete %>
+  </div>
+
+  <div>
+    <%= form.label :tom_original, style: "display: block" %>
+    <%= form.text_field :tom_original %>
+  </div>
+
+  <div>
+    <%= form.label :ultimo_tom_tocado, style: "display: block" %>
+    <%= form.text_field :ultimo_tom_tocado %>
+  </div>
+
+  <div>
+    <%= form.label :bmp_original, style: "display: block" %>
+    <%= form.number_field :bmp_original %>
+  </div>
+
+  <div>
+    <%= form.label :ultimo_bpm_tocado, style: "display: block" %>
+    <%= form.number_field :ultimo_bpm_tocado %>
+  </div>
+
+  <div>
+    <%= form.label :obs, style: "display: block" %>
+    <%= form.text_field :obs %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
