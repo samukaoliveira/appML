@@ -65,6 +65,6 @@ class EscalasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def escala_params
-      params.require(:escala).permit(:data, :hora, :nome, :musica_id, :baterista, :baixista, :tecladista, :vocalista, :vionolista, :guitarrista, :outros, :obs)
+      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :vionolista, :guitarrista, :outros, :obs)
     end
 end

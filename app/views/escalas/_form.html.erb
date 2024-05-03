@@ -27,38 +27,33 @@
   </div>
 
   <div>
-    <%= form.label :musica_id, style: "display: block" %>
-    <%= form.text_field :musica_id %>
-  </div>
-
-  <div>
     <%= form.label :baterista, style: "display: block" %>
-    <%= form.text_field :baterista %>
+    <%= form.select :baterista, value: opcoes_de_baterista %>
   </div>
 
   <div>
     <%= form.label :baixista, style: "display: block" %>
-    <%= form.text_field :baixista %>
+    <%= form.select :baixista, value: opcoes_de_baixista %>
   </div>
 
   <div>
     <%= form.label :tecladista, style: "display: block" %>
-    <%= form.text_field :tecladista %>
+    <%= form.select :tecladista, value: opcoes_de_tecladista %>
   </div>
 
   <div>
     <%= form.label :vocalista, style: "display: block" %>
-    <%= form.text_field :vocalista %>
+    <%= form.select :vocalista, value: opcoes_de_vocalista %>
   </div>
 
   <div>
     <%= form.label :vionolista, style: "display: block" %>
-    <%= form.text_field :vionolista %>
+    <%= form.select :vionolista, value: opcoes_de_violonista %>
   </div>
 
   <div>
     <%= form.label :guitarrista, style: "display: block" %>
-    <%= form.text_field :guitarrista %>
+    <%= form.select :guitarrista, value: opcoes_de_guitarrista %>
   </div>
 
   <div>

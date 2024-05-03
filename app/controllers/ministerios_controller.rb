@@ -65,6 +65,6 @@ class MinisteriosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ministerio_params
-      params.require(:ministerio).permit(:membro, :lider, :nome, :administrador)
+      params.require(:ministerio).permit(:lider, :nome, :administrador)
     end
 end

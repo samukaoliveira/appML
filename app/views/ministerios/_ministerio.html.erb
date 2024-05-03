@@ -20,10 +20,10 @@
     <th>Membros</th>
     <th>Função</th>
     </tr>
-    <% ministerio.includes(:membro).each do | membro | %>
+    <% ministerio.usuarios.each do | membro | %>
     <tr>
     <td><%= membro.nome %></td>
-    <td><%= membro.tipo_skill %></td>
+    <td><%= membro.tipo_skill.nome %></td>
     <td><%= link_to "Editar", membro  %></td>
     </tr>
     <% end %>

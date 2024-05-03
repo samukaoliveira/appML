@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_03_183522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,11 +18,59 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "role_user", ["user", "admin"]
 
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string "logradouro"
+    t.integer "numero"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "estado"
+    t.integer "cep"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_enderecos_on_user_id"
+  end
+
   create_table "escalas", force: :cascade do |t|
     t.date "data"
     t.time "hora"
     t.string "nome"
-    t.bigint "musica_id", null: false
     t.string "baterista"
     t.string "baixista"
     t.string "tecladista"
@@ -33,7 +81,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
     t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["musica_id"], name: "index_escalas_on_musica_id"
   end
 
   create_table "membros", force: :cascade do |t|
@@ -63,6 +110,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
     t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.decimal "price", precision: 8, scale: 2, null: false
+    t.boolean "publish", default: false, null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "promo", default: false
+    t.decimal "promo_price", default: "0.0"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "tipo_skills", force: :cascade do |t|
@@ -105,8 +165,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_203105) do
     t.index ["musica_id"], name: "index_versaos_on_musica_id"
   end
 
-  add_foreign_key "escalas", "musicas"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "enderecos", "users"
   add_foreign_key "membros", "ministerios"
   add_foreign_key "membros", "usuarios"
+  add_foreign_key "products", "categories"
   add_foreign_key "usuarios", "tipo_skills"
 end
