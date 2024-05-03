@@ -44,6 +44,17 @@
     <%= nome_musico escala.guitarrista %>
   </p>
 
+  <% if escala.musicas.any? %>
+  <strong>Músicas:</strong>
+  <ul>
+    <% escala.musicas.each do |musica| %>
+      <li><%= musica.nome %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhuma música associada a esta escala.</p>
+<% end %>
+
   <p>
     <strong>Outros:</strong>
     <%= escala.outros %>

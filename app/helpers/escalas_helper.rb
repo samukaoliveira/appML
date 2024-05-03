@@ -10,6 +10,10 @@ module EscalasHelper
         Usuario.includes(:tipo_skill).where(tipo_skill: { nome: "Bateria" } ).map { | bat | [ bat.nome, bat.id ]}
     end
 
+    def opcoes_de_musica
+        Musica.all.map { | music | [ music.nome, music.id ]}
+    end
+
     def opcoes_de_baixista
         Usuario.includes(:tipo_skill).where(tipo_skill: { nome: "Baixo" } ).map { | bat | [ bat.nome, bat.id ]}
     end
