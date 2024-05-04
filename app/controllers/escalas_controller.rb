@@ -17,6 +17,7 @@ class EscalasController < ApplicationController
 
   # GET /escalas/1/edit
   def edit
+    @musicas_associadas = @escala.musicas.pluck(:id)
   end
 
   # POST /escalas or /escalas.json
@@ -26,6 +27,8 @@ class EscalasController < ApplicationController
 
     respond_to do |format|
       if @escala.save
+        @escala.musicas << Musica.find(params[:musica_ids]) if params[:musica_ids].present?
+      
         format.html { redirect_to escala_url(@escala), notice: "Escala was successfully created." }
         format.json { render :show, status: :created, location: @escala }
       else
@@ -39,7 +42,7 @@ class EscalasController < ApplicationController
   def update
     respond_to do |format|
       if @escala.update(escala_params)
-        processar_musicas(@escala, escala_params)
+        @escala.musicas << Musica.find(params[:musica_ids]) if params[:musica_ids].present?
         format.html { redirect_to escala_url(@escala), notice: "Escala was successfully updated." }
         format.json { render :show, status: :ok, location: @escala }
       else
@@ -67,7 +70,10 @@ class EscalasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def escala_params
-      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :vocalista, :guitarrista, :outros, :obs, :musica1, :musica2, :musica3)
+      # Aceita os três IDs de música separadamente e os agrupa em um array
+      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :vionolista, :guitarrista, :outros, :obs, :musica1_id, :musica2_id, :musica3_id).tap do |whitelisted|
+        whitelisted[:musica_ids] = [whitelisted.delete(:musica1_id), whitelisted.delete(:musica2_id), whitelisted.delete(:musica3_id)].compact
+      end
     end
     
 

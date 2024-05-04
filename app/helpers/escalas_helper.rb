@@ -11,7 +11,7 @@ module EscalasHelper
     end
 
     def opcoes_de_musica
-        Musica.all.map { | music | [ music.nome, music.id ]}
+        Musica.all
     end
 
     def opcoes_de_baixista

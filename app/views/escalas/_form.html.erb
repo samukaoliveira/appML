@@ -56,21 +56,20 @@
     <%= form.select :guitarrista, value: opcoes_de_guitarrista %>
   </div>
 
+<div>
+    <%= form.label :musica1_id, "Música 1", style: "display: block" %>
+    <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id } %>
+  </div>
+
   <div>
-  <%= form.label :musica1, "Música 1", style: "display: block" %>
-  <%= form.select :musica1, opcoes_de_musica %>
-</div>
+    <%= form.label :musica2_id, "Música 2", style: "display: block" %>
+    <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id } %>
+  </div>
 
-<div>
-  <%= form.label :musica2, "Música 2", style: "display: block" %>
-  <%= form.select :musica2, opcoes_de_musica %>
-</div>
-
-<div>
-  <%= form.label :musica3, "Música 3", style: "display: block" %>
-  <%= form.select :musica3, opcoes_de_musica %>
-</div>
-
+  <div>
+    <%= form.label :musica3_id, "Música 3", style: "display: block" %>
+    <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id } %>
+  </div>
 
   <div>
     <%= form.label :outros, style: "display: block" %>
