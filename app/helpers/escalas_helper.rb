@@ -14,6 +14,10 @@ module EscalasHelper
         Musica.all
     end
 
+    def opcoes_de_versao(id)
+        Versao.where(musica_id: id.to_i)
+    end
+
     def opcoes_de_baixista
         Usuario.includes(:tipo_skill).where(tipo_skill: { nome: "Baixo" } ).map { | bat | [ bat.nome, bat.id ]}
     end
