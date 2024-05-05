@@ -11,89 +11,123 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :data, style: "display: block" %>
-    <%= form.date_field :data %>
-  </div>
+  <div class="form-control">
+    <div>
+      <%= form.label :data, style: "display: block", class: "form-label" %>
+      <%= form.date_field :data, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.label :hora, style: "display: block" %>
-    <%= form.time_field :hora %>
-  </div>
+    <div>
+      <%= form.label :hora, style: "display: block", class: "form-label" %>
+      <%= form.time_field :hora, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div>
-    <%= form.label :baterista, style: "display: block" %>
-    <%= form.select :baterista, value: opcoes_de_baterista %>
-  </div>
-
-  <div>
-    <%= form.label :baixista, style: "display: block" %>
-    <%= form.select :baixista, value: opcoes_de_baixista %>
-  </div>
-
-  <div>
-    <%= form.label :tecladista, style: "display: block" %>
-    <%= form.select :tecladista, value: opcoes_de_tecladista %>
-  </div>
-
-  <div>
-    <%= form.label :vocalista, style: "display: block" %>
-    <%= form.select :vocalista, value: opcoes_de_vocalista %>
-  </div>
-
-  <div>
-    <%= form.label :vionolista, style: "display: block" %>
-    <%= form.select :vionolista, value: opcoes_de_violonista %>
-  </div>
-
-  <div>
-    <%= form.label :guitarrista, style: "display: block" %>
-    <%= form.select :guitarrista, value: opcoes_de_guitarrista %>
-  </div>
-
-<div>
-    <%= form.label :musica1_id, "Música 1", style: "display: block" %>
-    <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id } %>
-
-    <%= form.label :_versao_musica1_id, "Versão", style: "display: block" %>
-    <%= form.select :_versao_musica1_id, opcoes_de_versao(@escala.musicas.first.id).map { |versao| [versao.nome, versao.id] } %>
+    <div>
+      <%= form.label :nome, style: "display: block", class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control" %>
+    </div>
 
   </div>
+  </div class="form-control">
 
-  <div>
-    <%= form.label :musica2_id, "Música 2", style: "display: block" %>
-    <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id } %>
+    <div>
+      <%= form.label :baterista, style: "display: block", class: "form-label" %>
+      <%= form.select :baterista, value: opcoes_de_baterista, class: "form-control" %>
+    </div>
 
-    <%= form.label :_versao_musica2_id, "Versão", style: "display: block" %>
-    <%= form.select :_versao_musica2_id, opcoes_de_versao(@escala.musicas.second.id).map { |versao| [versao.nome, versao.id] } %>
+    <div>
+      <%= form.label :baixista, style: "display: block", class: "form-label" %>
+      <%= form.select :baixista, value: opcoes_de_baixista, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :tecladista, style: "display: block", class: "form-label" %>
+      <%= form.select :tecladista, value: opcoes_de_tecladista, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :vocalista, style: "display: block", class: "form-label" %>
+      <%= form.select :vocalista, value: opcoes_de_vocalista, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :vionolista, style: "display: block", class: "form-label" %>
+      <%= form.select :vionolista, value: opcoes_de_violonista, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :guitarrista, style: "display: block", class: "form-label" %>
+      <%= form.select :guitarrista, value: opcoes_de_guitarrista, class: "form-control" %>
+    </div>
 
   </div>
 
   <div>
-    <%= form.label :musica3_id, "Música 3", style: "display: block" %>
-    <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id } %>
+      <%= form.label :musica1_id, "Música 1", style: "display: block", class: "form-label" %>
+      <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id } %>
 
-    <%= form.label :_versao_musica3_id, "Versão", style: "display: block" %>
-    <%= form.select :_versao_musica3_id, opcoes_de_versao(@escala.musicas.third.id).map { |versao| [versao.nome, versao.id] } %>
+      <%= form.label :_versao_musica1_id, "Versão", style: "display: block" %>
+      <% form.select :_versao_musica1_id, opcoes_de_versao(@escala.musicas.first.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
+      <%= form.select :_versao_musica1_id, [], include_blank: true if controller.action_name == 'new' %>
+    </div>
 
-  </div>
+    <div>
+      <%= form.label :musica2_id, "Música 2", style: "display: block", class: "form-label" %>
+      <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id } %>
 
-  <div>
-    <%= form.label :outros, style: "display: block" %>
-    <%= form.text_field :outros %>
-  </div>
+      <%= form.label :_versao_musica2_id, "Versão", style: "display: block" %>
+      <%= form.select :_versao_musica2_id, opcoes_de_versao(@escala.musicas.second.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
+      <%= form.select :_versao_musica2_id, [], include_blank: true if controller.action_name == 'new' %>
 
-  <div>
-    <%= form.label :obs, style: "display: block" %>
-    <%= form.text_field :obs %>
-  </div>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.label :musica3_id, "Música 3", style: "display: block", class: "form-label" %>
+      <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id } %>
+
+      <%= form.label :_versao_musica3_id, "Versão", style: "display: block" %>
+      <%= form.select :_versao_musica3_id, opcoes_de_versao(@escala.musicas.third.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
+      <%= form.select :_versao_musica3_id, [], include_blank: true if controller.action_name == 'new' %>
+    </div>
+
+    <div>
+      <%= form.label :outros, style: "display: block", class: "form-label" %>
+      <%= form.text_field :outros %>
+    </div>
+
+    <div>
+      <%= form.label :obs, style: "display: block", class: "form-label" %>
+      <%= form.text_field :obs %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
 <% end %>
+
+
+<script>
+  $(document).ready(function() {
+    // Ao mudar a seleção da música
+    $("#musica1_select").change(function() {
+      // Obtém o ID da música selecionada
+      var musicaId = $(this).val();
+
+      // Se a música for selecionada, mostra o select de versões
+      if (musicaId) {
+        $("#versao_musica1_div").show();
+
+        // Carrega dinamicamente as versões correspondentes à música selecionada
+        $.ajax({
+          url: "/musicas/carregar_versoes",
+          method: "GET",
+          data: { musica_id: musicaId },
+          dataType: "script"
+        });
+      } else {
+        // Se nenhuma música for selecionada, oculta o select de versões
+        $("#versao_musica1_div").hide();
+      }
+    });
+  });
+</script>

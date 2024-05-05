@@ -5,9 +5,16 @@
     "defaults"
   ],
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "jquery": "^3.7.1",
     "node": "^22.0.0"
   },
   "scripts": {
-    "build:css": "node app/assets/javascript/esbuild.config.js"
+    "build:css": "esbuild app/assets/stylesheets/application.css --bundle --minify --outfile=public/assets/application.css",
+    "watch:css": "esbuild app/assets/stylesheets/application.css --bundle --minify --watch --outfile=public/assets/application.css"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2"
   }
 }

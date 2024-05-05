@@ -15,7 +15,8 @@ module EscalasHelper
     end
 
     def opcoes_de_versao(id)
-        Versao.where(musica_id: id.to_i)
+        return Versao.where(musica_id: id.to_i) unless id.nil?
+        "Nenhuma versão encontrada"
     end
 
     def opcoes_de_baixista
