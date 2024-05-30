@@ -1,68 +1,96 @@
 <div id="<%= dom_id escala %>">
-  <p>
-    <strong>Data:</strong>
-    <%= escala.data %>
-  </p>
 
-  <p>
-    <strong>Hora:</strong>
-    <%= escala.hora %>
-  </p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4 rounded shadow p-3 m-2">
+      <p>
+        <strong>Data:</strong>
+        <%= escala.data %>
+      </p>
 
-  <p>
-    <strong>Nome:</strong>
-    <%= escala.nome %>
-  </p>
+      <p>
+        <strong>Hora:</strong>
+        <%= escala.hora %>
+      </p>
 
-  <p>
-    <strong>Baterista:</strong>
-    <%= nome_musico escala.baterista %>
-  </p>
+      <p>
+        <strong>Nome:</strong>
+        <%= escala.nome %>
+      </p>
 
-  <p>
-    <strong>Baixista:</strong>
-    <%= nome_musico escala.baixista %>
-  </p>
+      <p>
+        <strong>Baterista:</strong>
+        <%= nome_musico escala.baterista %>
+      </p>
 
-  <p>
-    <strong>Tecladista:</strong>
-    <%= nome_musico escala.tecladista %>
-  </p>
+      <p>
+        <strong>Baixista:</strong>
+        <%= nome_musico escala.baixista %>
+      </p>
 
-  <p>
-    <strong>Vocalista:</strong>
-    <%= nome_musico escala.vocalista %>
-  </p>
+      <p>
+        <strong>Tecladista:</strong>
+        <%= nome_musico escala.tecladista %>
+      </p>
 
-  <p>
-    <strong>Vionolista:</strong>
-    <%= nome_musico escala.vionolista %>
-  </p>
+      <p>
+        <strong>Vocalista:</strong>
+        <%= nome_musico escala.vocalista %>
+      </p>
 
-  <p>
-    <strong>Guitarrista:</strong>
-    <%= nome_musico escala.guitarrista %>
-  </p>
+      <p>
+        <strong>Vionolista:</strong>
+        <%= nome_musico escala.vionolista %>
+      </p>
 
-  <% if escala.musicas.any? %>
-  <strong>Músicas:</strong>
-  <ul>
-    <% escala.musicas.each do |musica| %>
-      <li><%= musica.nome %></li>
+      <p>
+        <strong>Guitarrista:</strong>
+        <%= nome_musico escala.guitarrista %>
+      </p>
+
+    </div>
+
+    <div class="col-7 rounded shadow p-3 m-2">
+      <% if escala.musicas.any?%>
+      <strong>Músicas:</strong>
+      <ul>
+        <% escala.musicas.each do |musica| %>
+          <table class="table">
+            <thead>
+              <th class="col-4">Música</th>
+              <th class="col-4">Versão</th>
+              <th class="col-4">Link Youtube</th>
+            </thead>
+            <tbody>
+              <td class="col-4">
+                <%= musica.nome %>
+              </td>
+              <td class="col-4">
+                <%= versao_da_musica_escala(musica.id, musica.versao) %>
+              </td>
+              <td class="col-4">
+                <a href="<%= link_versao_da_musica_escala(musica.id, musica.versao) %>"><%= link_versao_da_musica_escala(musica.id, musica.versao) %></a>
+              </td>
+            </tbody>
+          </table>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Nenhuma música associada a esta escala.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>Nenhuma música associada a esta escala.</p>
-<% end %>
 
-  <p>
-    <strong>Outros:</strong>
-    <%= escala.outros %>
-  </p>
+      <p>
+        <strong>Outros:</strong>
+        <%= escala.outros %>
+      </p>
 
-  <p>
-    <strong>Obs:</strong>
-    <%= escala.obs %>
-  </p>
+      <p>
+        <strong>Obs:</strong>
+        <%= escala.obs %>
+      </p>
+
+      
+    </div>
+  </div>
 
 </div>
