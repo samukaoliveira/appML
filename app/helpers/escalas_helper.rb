@@ -7,8 +7,9 @@ module EscalasHelper
     end
 
     def opcoes_de_baterista
-        Usuario.where(tipo_skill: { nome: "Bateria" }).map { |usuario| [usuario.nome, usuario.id] }
-      end
+        Usuario.joins(:tipo_skills).where(tipo_skills: { nome: "Bateria" }).distinct.map { |usuario| [usuario.nome, usuario.id] }
+    end
+      
       
 
     def opcoes_de_musica

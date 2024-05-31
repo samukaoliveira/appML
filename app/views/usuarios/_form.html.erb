@@ -28,7 +28,13 @@
 
   <div>
   <%= form.label :tipo_skill_ids, "Skills", style: "display: block" %>
-  <%= form.select :tipo_skill_ids, opcoes_de_skills, {}, multiple: true %>
+  <%# form.select :tipo_skill_ids, opcoes_de_skills, {}, multiple: true %>
+  <% opcoes_de_skills.each do |skill| %>
+    <div>
+      <%= form.check_box :tipo_skill_ids, { multiple: true }, skill[1], nil %>
+      <%= form.label "usuario_tipo_skill_id_#{skill[1]}", skill[0] %>
+    </div>
+  <% end %>
 </div>
 
 

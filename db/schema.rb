@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_31_141550) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_31_171925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,10 +113,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_31_141550) do
     t.string "email"
     t.string "nome"
     t.string "role"
-    t.bigint "tipo_skill_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tipo_skill_id"], name: "index_usuarios_on_tipo_skill_id"
   end
 
   create_table "versaos", force: :cascade do |t|
@@ -131,5 +129,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_31_141550) do
   add_foreign_key "escalas_musicas", "versaos"
   add_foreign_key "membros", "ministerios"
   add_foreign_key "membros", "usuarios"
-  add_foreign_key "usuarios", "tipo_skills"
 end
