@@ -31,6 +31,8 @@ gem "jbuilder"
 
 gem "bootstrap"
 
+gem "bootstrap-icons"
+
 gem "sassc"
 
 # Use Redis adapter to run Action Cable in production

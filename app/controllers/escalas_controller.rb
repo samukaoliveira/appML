@@ -71,7 +71,7 @@ class EscalasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def escala_params
       # Aceita os três IDs de música separadamente e os agrupa em um array
-      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :vionolista, :guitarrista, :outros, :obs, :musica1_id, :musica2_id, :musica3_id).tap do |whitelisted|
+      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :violonista, :guitarrista, :outros, :obs, :musica1_id, :musica2_id, :musica3_id).tap do |whitelisted|
         whitelisted[:musica_ids] = [whitelisted.delete(:musica1_id), whitelisted.delete(:musica2_id), whitelisted.delete(:musica3_id)].compact
       end
     end

@@ -27,9 +27,10 @@
   </div>
 
   <div>
-    <%= form.label :tipo_skill_id, style: "display: block" %>
-    <%= form.select :tipo_skill_id, value: opcoes_de_skills %>
-  </div>
+  <%= form.label :tipo_skill_ids, "Skills", style: "display: block" %>
+  <%= form.select :tipo_skill_ids, opcoes_de_skills, {}, multiple: true %>
+</div>
+
 
   <div>
     <%= form.submit %>

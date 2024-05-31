@@ -24,7 +24,7 @@ class EscalasTest < ApplicationSystemTestCase
     fill_in "Obs", with: @escala.obs
     fill_in "Outros", with: @escala.outros
     fill_in "Tecladista", with: @escala.tecladista
-    fill_in "Vionolista", with: @escala.vionolista
+    fill_in "Violonista", with: @escala.violonista
     fill_in "Vocalista", with: @escala.vocalista
     click_on "Create Escala"
 
@@ -46,7 +46,7 @@ class EscalasTest < ApplicationSystemTestCase
     fill_in "Obs", with: @escala.obs
     fill_in "Outros", with: @escala.outros
     fill_in "Tecladista", with: @escala.tecladista
-    fill_in "Vionolista", with: @escala.vionolista
+    fill_in "Violonista", with: @escala.violonista
     fill_in "Vocalista", with: @escala.vocalista
     click_on "Update Escala"
 

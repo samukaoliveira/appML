@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_03_201416) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_31_141550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,20 +26,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_201416) do
     t.string "baixista"
     t.string "tecladista"
     t.string "vocalista"
-    t.string "vionolista"
     t.string "guitarrista"
     t.string "outros"
     t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "musica1"
+    t.integer "musica2"
+    t.integer "musica3"
+    t.integer "musica_extra"
+    t.integer "musica1_versao"
+    t.integer "musica2_versao"
+    t.integer "musica3_versao"
+    t.integer "musica_extra_versao"
+    t.string "violonista"
   end
 
   create_table "escalas_musicas", id: false, force: :cascade do |t|
     t.bigint "escala_id"
     t.bigint "musica_id"
+    t.bigint "versao_id"
     t.index ["escala_id", "musica_id"], name: "index_escalas_musicas_on_escala_id_and_musica_id"
     t.index ["escala_id"], name: "index_escalas_musicas_on_escala_id"
     t.index ["musica_id"], name: "index_escalas_musicas_on_musica_id"
+    t.index ["versao_id"], name: "index_escalas_musicas_on_versao_id"
   end
 
   create_table "membros", force: :cascade do |t|
@@ -77,6 +87,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_201416) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tipo_skills_usuarios", id: false, force: :cascade do |t|
+    t.bigint "usuario_id", null: false
+    t.bigint "tipo_skill_id", null: false
+    t.index ["tipo_skill_id"], name: "index_tipo_skills_usuarios_on_tipo_skill_id"
+    t.index ["usuario_id"], name: "index_tipo_skills_usuarios_on_usuario_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -111,6 +128,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_201416) do
     t.index ["musica_id"], name: "index_versaos_on_musica_id"
   end
 
+  add_foreign_key "escalas_musicas", "versaos"
   add_foreign_key "membros", "ministerios"
   add_foreign_key "membros", "usuarios"
   add_foreign_key "usuarios", "tipo_skills"

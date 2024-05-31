@@ -9,7 +9,7 @@ one:
   baixista: MyString
   tecladista: MyString
   vocalista: MyString
-  vionolista: MyString
+  violonista: MyString
   guitarrista: MyString
   outros: MyString
   obs: MyString
@@ -23,7 +23,7 @@ two:
   baixista: MyString
   tecladista: MyString
   vocalista: MyString
-  vionolista: MyString
+  violonista: MyString
   guitarrista: MyString
   outros: MyString
   obs: MyString

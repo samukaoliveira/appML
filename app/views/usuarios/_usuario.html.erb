@@ -16,7 +16,12 @@
 
   <p>
     <strong>Tipo skill:</strong>
-    <%= usuario.tipo_skill.nome %>
+    <% if usuario.tipo_skills.present? %>
+      
+      <%= usuario.tipo_skills.each do |skill| %>
+        <%= skill.nome %>
+      <% end %>
+    <% end %>
   </p>
 
 </div>

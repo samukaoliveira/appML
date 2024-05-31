@@ -17,7 +17,7 @@ class EscalasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create escala" do
     assert_difference("Escala.count") do
-      post escalas_url, params: { escala: { baixista: @escala.baixista, baterista: @escala.baterista, data: @escala.data, guitarrista: @escala.guitarrista, hora: @escala.hora, musica_id: @escala.musica_id, nome: @escala.nome, obs: @escala.obs, outros: @escala.outros, tecladista: @escala.tecladista, vionolista: @escala.vionolista, vocalista: @escala.vocalista } }
+      post escalas_url, params: { escala: { baixista: @escala.baixista, baterista: @escala.baterista, data: @escala.data, guitarrista: @escala.guitarrista, hora: @escala.hora, musica_id: @escala.musica_id, nome: @escala.nome, obs: @escala.obs, outros: @escala.outros, tecladista: @escala.tecladista, violonista: @escala.violonista, vocalista: @escala.vocalista } }
     end
 
     assert_redirected_to escala_url(Escala.last)
@@ -34,7 +34,7 @@ class EscalasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update escala" do
-    patch escala_url(@escala), params: { escala: { baixista: @escala.baixista, baterista: @escala.baterista, data: @escala.data, guitarrista: @escala.guitarrista, hora: @escala.hora, musica_id: @escala.musica_id, nome: @escala.nome, obs: @escala.obs, outros: @escala.outros, tecladista: @escala.tecladista, vionolista: @escala.vionolista, vocalista: @escala.vocalista } }
+    patch escala_url(@escala), params: { escala: { baixista: @escala.baixista, baterista: @escala.baterista, data: @escala.data, guitarrista: @escala.guitarrista, hora: @escala.hora, musica_id: @escala.musica_id, nome: @escala.nome, obs: @escala.obs, outros: @escala.outros, tecladista: @escala.tecladista, violonista: @escala.violonista, vocalista: @escala.vocalista } }
     assert_redirected_to escala_url(@escala)
   end
 

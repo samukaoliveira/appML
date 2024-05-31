@@ -1,7 +1,104 @@
 <p style="color: green"><%= notice %></p>
 
-<h1 class="text-center">Escala </h1>
-<%= render @escala %>
+<h1 class="text-center">Escala - <%= format_short_date @escala.data %></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4 rounded shadow p-3 m-2">
+      <table class="table">
+        
+
+        <tr>
+          <td class="fw-bold text-center" colspan="2">Nome:</td>
+          <td><%= @escala.nome %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'clock.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Hora:</td>
+          <td><%= format_time @escala.hora %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'drum-set.png', size: '25', class: '' %></td>
+          <td class="fw-bold ">Baterista:</td>
+          <td class="col-7"><%= nome_musico @escala.baterista %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'bass-guitar.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Baixista:</td>
+          <td><%= nome_musico @escala.baixista %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'synthesizer.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Tecladista:</td>
+          <td><%= nome_musico @escala.tecladista %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'microphone.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Vocalistas:</td>
+          <td><%= nome_musico @escala.vocalista %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'guitar.png', size: '25', class: '' %></td>
+          <td class="fw-bold">violonista:</td>
+          <td><%= nome_musico @escala.violonista %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'electric-guitar.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Guitarrista:</td>
+          <td><%= nome_musico @escala.guitarrista %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-7 rounded shadow p-3 m-2">
+      <% if @escala.musicas.any?%>
+      <td><%= image_tag 'music.png', size: '25', class: '' %> Músicas:</td>
+      <ul>
+        <% @escala.musicas.each do |musica| %>
+          <table class="table">
+            <thead>
+              <th class="col-4">Música</th>
+              <th class="col-4">Versão</th>
+              <th class="col-4">Link Youtube</th>
+            </thead>
+            <tbody>
+              <td class="col-4">
+                <%= musica.nome %>
+              </td>
+              <td class="col-4">
+                <%= versao_da_musica_escala(musica.id, musica.versao) %>
+              </td>
+              <td class="col-4">
+                <a href="<%= link_versao_da_musica_escala(musica.id, musica.versao) %>"><%= link_versao_da_musica_escala(musica.id, musica.versao) %></a>
+              </td>
+            </tbody>
+          </table>
+        <% end %>
+      </ul>
+    <% else %>
+      <tr>Nenhuma música associada a esta escala.</tr>
+    <% end %>
+
+      <tr>
+        <td>Outros:</td>
+        <%= @escala.outros %>
+      </tr>
+
+      <tr>
+        <td>Obs:</td>
+        <%= @escala.obs %>
+      </tr>
+
+      
+    </div>
+  </div>
+
 
 <div>
   <%= link_to "Edit this escala", edit_escala_path(@escala) %> |

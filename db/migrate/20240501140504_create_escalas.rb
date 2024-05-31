@@ -9,7 +9,7 @@ class CreateEscalas < ActiveRecord::Migration[7.1]
       t.string :baixista
       t.string :tecladista
       t.string :vocalista
-      t.string :vionolista
+      t.string :violonista
       t.string :guitarrista
       t.string :outros
       t.string :obs
