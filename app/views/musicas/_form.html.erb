@@ -11,43 +11,47 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
+  <div class="container justify-content-center shadow">
+    <div class="row p-4">
 
-  <div>
-    <%= form.label :interprete, style: "display: block" %>
-    <%= form.text_field :interprete %>
-  </div>
+      <div class="col-5 offset-1 mb-3">
+        <%= form.label :nome, style: "display: block" %>
+        <%= form.text_field :nome %>
+      </div>
 
-  <div>
-    <%= form.label :tom_original, style: "display: block" %>
-    <%= form.text_field :tom_original %>
-  </div>
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :interprete, style: "display: block" %>
+        <%= form.text_field :interprete %>
+      </div>
 
-  <div>
-    <%= form.label :ultimo_tom_tocado, style: "display: block" %>
-    <%= form.text_field :ultimo_tom_tocado %>
-  </div>
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :tom_original, style: "display: block" %>
+        <%= form.text_field :tom_original %>
+      </div>
 
-  <div>
-    <%= form.label :bmp_original, style: "display: block" %>
-    <%= form.number_field :bmp_original %>
-  </div>
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :ultimo_tom_tocado, style: "display: block" %>
+        <%= form.text_field :ultimo_tom_tocado %>
+      </div>
 
-  <div>
-    <%= form.label :ultimo_bpm_tocado, style: "display: block" %>
-    <%= form.number_field :ultimo_bpm_tocado %>
-  </div>
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :bmp_original, style: "display: block" %>
+        <%= form.number_field :bmp_original %>
+      </div>
 
-  <div>
-    <%= form.label :obs, style: "display: block" %>
-    <%= form.text_field :obs %>
-  </div>
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :ultimo_bpm_tocado, style: "display: block" %>
+        <%= form.number_field :ultimo_bpm_tocado %>
+      </div>
 
-
+      <div class="col-5 offset-1  mb-3">
+        <%= form.label :obs, style: "display: block" %>
+        <%= form.text_field :obs %>
+      </div>
   <div>
-    <%= form.submit %>
-  </div>
+<div>
+
+      <div class="col-5 offset-1  mb-3">
+        <%= form.submit %>
+      </div>
 <% end %>

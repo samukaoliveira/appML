@@ -1,0 +1,45 @@
+<div class="container">    
+  <div class="row mt-3 shadow">  
+    <div class="justify-content-center">
+      <table class="table">
+        <td class="" >
+          <%= link_to root_path, class: "nav-link d-inline" do %>
+            <div>
+              <p class="text-primary text-center fs-1 fw-bold titulos-car"><%= image_tag 'gospel.png', size: '80' %>IEC</i></p>
+              <p class="text-danger text-center mn">Ministério de Louvor</p>
+            </div>
+          <% end %>
+
+        </td>
+
+        <td class="" >
+          <%= link_to "Home", home_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'home')}" %>
+        </td>
+
+        <td class="" >
+          <%= link_to "Escalas", escalas_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'escalas')}" %>
+        </td>
+
+        <td class="" >
+          <%= link_to "Músicas", musicas_path, class:"nav-link active d-inline #{ "text-secondary" unless controller.controller_name == 'musicas'}" %>
+        </td>
+
+        <td class="" >
+          <%= link_to "Membros", membros_path, class:"nav-link active d-inline #{ "text-secondary" unless controller.controller_name == 'membros'}" %>
+        </td>
+
+      <%# if @admin.present? %>
+        <td class="" >
+          <%= link_to "Skills", tipo_skills_path, class:"nav-link active #{ "text-secondary" unless controller.controller_name == 'tipo_skills'}" %>
+        </td>
+      <%# end %>
+        <td class="" >
+          <%= link_to "Escalas", escalas_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'escalas')}" %>
+        </td>
+       
+      </table>
+      <hr class="fs-5">
+      <%= @admin %>
+    </div>
+  </div>
+</div>

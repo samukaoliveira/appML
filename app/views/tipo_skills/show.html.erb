@@ -2,9 +2,9 @@
 
 <%= render @tipo_skill %>
 
-<div>
-  <%= link_to "Edit this tipo skill", edit_tipo_skill_path(@tipo_skill) %> |
-  <%= link_to "Back to tipo skills", tipo_skills_path %>
-
-  <%= button_to "Destroy this tipo skill", @tipo_skill, method: :delete %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar Tipo de Skill", edit_tipo_skill_path(@tipo_skill), class: "btn btn-warning m-2" %>
+  <%= button_to "Deletar Tipo de Skill", @tipo_skill, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Voltar", tipo_skills_path, class: "btn btn-secondary m-2" %>
 </div>
+

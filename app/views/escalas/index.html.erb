@@ -40,6 +40,8 @@
   <% end %>
 </div>
 
-<%= link_to new_escala_path do %>
-<%= image_tag "plus.png", size: "50", class: "mb-4" %>
-<% end %>
+<div class="d-flex">
+  <%= link_to new_escala_path, class: "d-flex align-items-center" do %>
+    <%= image_tag "plus.png", size: "50", class: "mb-4" %><p class="fs-5 text-decoration-none mb-4">Criar Escala</p>
+  <% end %>
+</div>

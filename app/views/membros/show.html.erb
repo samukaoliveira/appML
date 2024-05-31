@@ -2,9 +2,12 @@
 
 <%= render @membro %>
 
-<div>
-  <%= link_to "Edit this membro", edit_membro_path(@membro) %> |
-  <%= link_to "Back to membros", membros_path %>
-
-  <%= button_to "Destroy this membro", @membro, method: :delete %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar", edit_membro_path(@membro), class: "btn btn-warning m-2" %>
+  <%= button_to "Deletar membro", @membro, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Voltar", membros_path, class: "btn btn-secondary m-2" %>
 </div>
+
+
+
+

@@ -8,8 +8,8 @@
 </div>
 
 <div>
-  <%= link_to "Edit this ministerio", edit_ministerio_path(@ministerio) %> |
-  <%= link_to "Back to ministerios", ministerios_path %>
-
-  <%= button_to "Destroy this ministerio", @ministerio, method: :delete %>
+  <%= link_to "Editar ministerio", edit_ministerio_path(@ministerio), class: "btn btn-warning m-2" %> |
+  <%= button_to "Deletar", @ministerio, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Voltar", ministerios_path, class: "btn btn-secondary m-2" %>
 </div>
+

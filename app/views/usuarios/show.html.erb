@@ -2,9 +2,8 @@
 
 <%= render @usuario %>
 
-<div>
-  <%= link_to "Edit this usuario", edit_usuario_path(@usuario) %> |
-  <%= link_to "Back to usuarios", usuarios_path %>
-
-  <%= button_to "Destroy this usuario", @usuario, method: :delete %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar usuario", edit_usuario_path(@usuario), class: "btn btn-warning m-2" %>
+  <%= button_to "Deletar usuario", @usuario, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Voltar", usuarios_path, class: "btn btn-secondary m-2" %>
 </div>
