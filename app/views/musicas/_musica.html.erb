@@ -1,51 +1,12 @@
 <div id="<%= dom_id musica %>">
-  <p>
-    <strong>Nome:</strong>
-    <%= musica.nome %>
-  </p>
-
-  <p>
-    <strong>Interprete:</strong>
-    <%= musica.interprete %>
-  </p>
-
-  <p>
-    <strong>Tom original:</strong>
-    <%= musica.tom_original %>
-  </p>
-
-  <p>
-    <strong>Ultimo tom tocado:</strong>
-    <%= musica.ultimo_tom_tocado %>
-  </p>
-
-  <p>
-    <strong>Bmp original:</strong>
-    <%= musica.bmp_original %>
-  </p>
-
-  <p>
-    <strong>Ultimo bpm tocado:</strong>
-    <%= musica.ultimo_bpm_tocado %>
-  </p>
-
-  <p>
-    <strong>Obs:</strong>
-    <%= musica.obs %>
-  </p>
-
-  
-  <table class="table">
-    <tr>
-    <th>Versão</th>
-    <th>Link do Youtube</th>
-    </tr>
-    <% musica.versao.each do | versao | %>
-    <tr>
-    <td><%= versao.nome %></td>
-    <td><%= versao.link_youtube %></td>
-    <td><%= link_to "Editar", versao  %></td>
-    </tr>
-    <% end %>
-  </table>
+  <tr>
+    <td><%= musica.nome %></td>
+    <td><%= musica.interprete %></td>
+    <td><%= musica.tom_original %></td>
+    <td><%= musica.ultimo_tom_tocado %></td>
+    <td><%= musica.bmp_original %></td>
+    <td><%= musica.ultimo_bpm_tocado %></td>
+    <td><%= musica.obs %></td>
+    <td><%= link_to "Detalhes", musica %></td>
+  </tr>
 </div>
