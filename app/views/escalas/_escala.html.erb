@@ -12,7 +12,7 @@
         <td>
           <% if escala.musicas.any?%>
             <% escala.musicas.each do |musica| %>
-              <%= musica.nome %>, 
+              <%= musica.nome %><%= ', ' unless musica == escala.musicas.last %> 
           <% end %>
           <% else %>
             <tr>Nenhuma música associada a esta escala.</tr>

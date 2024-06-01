@@ -5,9 +5,8 @@ module VersaosHelper
         musica.nome
     end
 
-    def versao_da_musica(musica_id)
+    def versoes_da_musica(musica_id)
         versao = Versao.where(musica_id: musica_id)
-        versao.nome
     end
 
     def versao_da_musica_escala(musica_id, versao_id)

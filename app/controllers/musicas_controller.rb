@@ -3,7 +3,7 @@ class MusicasController < ApplicationController
 
   # GET /musicas or /musicas.json
   def index
-    @musicas = Musica.all
+    @musicas = MusicasCollectionDecorator.new(Musica.all)
   end
 
   # GET /musicas/1 or /musicas/1.json
@@ -60,7 +60,7 @@ class MusicasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_musica
-      @musica = Musica.find(params[:id])
+      @musica = MusicasDecorator.new(Musica.find(params[:id]))
     end
 
     # Only allow a list of trusted parameters through.

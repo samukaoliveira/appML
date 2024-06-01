@@ -1,8 +1,65 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @musica %>
-<div>
-  <%= link_to "Adicionar Versão", new_versao_path(musica_id: @musica) %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4 rounded shadow p-3 m-2">
+      <h3 class="text-center m-3">Detalhes da Música</h3>
+      <table class="table">
+        <tr>
+          <td><%= image_tag 'music.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Nome:</td>
+          <td><%= @musica.nome %></td>
+        </tr>
+          <td><%= image_tag 'singer.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Intérprete:</td>
+          <td><%= @musica.interprete %></td>
+        <tr>
+          <td><%= image_tag 'music-notes.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Tom original:</td>
+          <td><%= @musica.tom_original %></td>
+        <tr>
+          <td><%= image_tag 'pentagram.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Último tom tocado:</td>
+          <td><%= @musica.ultimo_tom_tocado %></td>
+        <tr>
+          <td><%= image_tag 'metronome.png', size: '25', class: '' %></td>
+          <td class="fw-bold">BPM Original:</td>
+          <td><%= @musica.bmp_original %></td>
+        <tr>
+          <td><%= image_tag 'metronome - p&b.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Último BPM tocado:</td>
+          <td><%= @musica.ultimo_bpm_tocado %></td>
+        <tr>
+          <td><%= image_tag 'observe.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Observações:</td>
+          <td><%= @musica.obs %></td>
+          <div>
+            <%= link_to "Adicionar Versão", new_versao_path(musica_id: @musica) %>
+          </div>
+      </table>
+    </div>
+
+    <div class="col-7 rounded shadow p-3 m-2">
+      <h3 class="text-center m-3">Versões</h3>
+      <table class="table">
+        
+      <% versoes_da_musica(@musica).each do |versao| %>
+        <tr>
+          <td><%= image_tag 'version.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Nome da versão:</td>
+          <td><%= versao.nome %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag 'youtube.png', size: '25', class: '' %></td>
+          <td class="fw-bold">Link do Youtube:</td>
+          <td><a href="<%= versao.link_youtube %>"><%= versao.link_youtube %></a></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
 </div>
 
 <div class="d-flex justify-content-center">
