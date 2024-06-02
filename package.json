@@ -1,14 +1,11 @@
 {
   "name": "app",
-  "private": "true",
-  "browserslist": [
-    "defaults"
-  ],
+  "private": true,
+  "browserslist": ["defaults"],
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "jquery": "^3.7.1",
-    "node": "^22.0.0"
+    "jquery": "^3.7.1"
   },
   "scripts": {
     "build:css": "esbuild app/assets/stylesheets/application.css --bundle --minify --outfile=public/assets/application.css",

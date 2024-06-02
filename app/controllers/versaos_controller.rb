@@ -6,6 +6,11 @@ class VersaosController < ApplicationController
     @versaos = Versao.all
   end
 
+
+  def carregar_versoes_musica(musica_id)
+    @versoes = Versao.where(musica_id: musica_id)
+  end
+
   # GET /versaos/1 or /versaos/1.json
   def show
   end
@@ -62,6 +67,7 @@ class VersaosController < ApplicationController
     def set_versao
       @versao = Versao.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def versao_params

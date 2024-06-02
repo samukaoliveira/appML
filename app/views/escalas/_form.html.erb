@@ -16,31 +16,33 @@
 
   <div class="row justify-content-center">
     <div class="col-4 rounded shadow p-3">
-        <div class="form-control">
-          <h5 class="text-center m-4">Informações Básicas</h5>
-          <div>
-            <%= form.label :data, style: "display: block", class: "form-label" %>
-            <%= form.date_field :data, class: "form-control" %>
-          </div>
-
-          <div>
-            <%= form.label :hora, style: "display: block", class: "form-label" %>
-            <%= form.time_field :hora, class: "form-control" %>
-          </div>
-
-          <div>
+        <div class="form-control row border-primary">
+          <h5 class="text-center m-4 text-primary">Informações Básicas</h5>
+          <div class="mb-3">
             <%= form.label :nome, style: "display: block", class: "form-label" %>
             <%= form.text_field :nome, class: "form-control" %>
           </div>
 
-          <div>
-            <%= form.label :outros, style: "display: block", class: "form-label" %>
-            <%= form.text_field :outros %>
+          <div class="row mb-3">
+            <div class="col-7">
+              <%= form.label :data, style: "display: block", class: "form-label" %>
+              <%= form.date_field :data, class: "form-control" %>
+            </div>
+
+            <div class="col-5">
+              <%= form.label :hora, style: "display: block", class: "form-label" %>
+              <%= form.time_field :hora, class: "form-control" %>
+            </div>
           </div>
 
-          <div>
+          <div class="mb-3">
+            <%= form.label :outros, style: "display: block", class: "form-label" %>
+            <%= form.text_field :outros, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
             <%= form.label :obs, style: "display: block", class: "form-label" %>
-            <%= form.text_field :obs %>
+            <%= form.text_field :obs, class: "form-control" %>
           </div>
 
           <div>
@@ -49,44 +51,45 @@
         </div>
     </div>
     <div class="col-4 rounded shadow p-3">
-        <div class="form-control">
-          <h5 class="text-center m-4">Membros</h5>
-          <div>
+        <div class="form-control border-success">
+          <h5 class="text-center m-4 text-success">Membros</h5>
+          <div class="mb-3">
             <%= form.label :baterista, style: "display: block", class: "form-label" %>
-            <%= form.select :baterista, value: opcoes_de_baterista, class: "form-control" %>
+            <%= form.select :baterista, value: opcoes_de_baterista, class: "form-select" %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <%= form.label :baixista, style: "display: block", class: "form-label" %>
-            <%= form.select :baixista, value: opcoes_de_baixista, class: "form-control" %>
+            <%= form.select :baixista, value: opcoes_de_baixista, class: "form-select" %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <%= form.label :tecladista, style: "display: block", class: "form-label" %>
-            <%= form.select :tecladista, value: opcoes_de_tecladista, class: "form-control" %>
+            <%= form.select :tecladista, value: opcoes_de_tecladista, class: "form-select" %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <%= form.label :vocalista, style: "display: block", class: "form-label" %>
-            <%= form.select :vocalista, value: opcoes_de_vocalista, class: "form-control" %>
+            <%= form.select :vocalista, value: opcoes_de_vocalista, class: "form-select" %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <%= form.label :violonista, style: "display: block", class: "form-label" %>
-            <%= form.select :violonista, value: opcoes_de_violonista, class: "form-control" %>
+            <%= form.select :violonista, value: opcoes_de_violonista, class: "form-select" %>
           </div>
 
-          <div>
+          <div class="mb-3">
             <%= form.label :guitarrista, style: "display: block", class: "form-label" %>
-            <%= form.select :guitarrista, value: opcoes_de_guitarrista, class: "form-control" %>
+            <%= form.select :guitarrista, value: opcoes_de_guitarrista, class: "form-select" %>
 
           </div>
 
         </div>
     </div>
     <div class="col-4 rounded shadow p-3">
-        <h5 class="text-center m-4">Músicas</h5>
-        <div class="form-control">
+        <div class="form-control border-warning">  
+        <h5 class="text-center m-4 text-warning">Músicas</h5>
+          <div class="m-3">
             <%= form.label :musica1_id, "Música 1", style: "display: block", class: "form-label" %>
             <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id } %>
 
@@ -95,7 +98,7 @@
             <%= form.select :_versao_musica1_id, [], include_blank: true if controller.action_name == 'new' %>
           </div>
 
-          <div>
+          <div class="m-3">
             <%= form.label :musica2_id, "Música 2", style: "display: block", class: "form-label" %>
             <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id } %>
 
@@ -105,7 +108,7 @@
 
           </div>
 
-          <div>
+          <div class="m-3">
             <%= form.label :musica3_id, "Música 3", style: "display: block", class: "form-label" %>
             <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id } %>
 
@@ -134,7 +137,7 @@
 
         // Carrega dinamicamente as versões correspondentes à música selecionada
         $.ajax({
-          url: "/musicas/carregar_versoes",
+          url: "/carregar_versoes_musica",
           method: "GET",
           data: { musica_id: musicaId },
           dataType: "script"

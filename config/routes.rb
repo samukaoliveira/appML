@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tipo_skills
   get 'home', to: 'home#index'
   root 'home#index'
+  get 'carregar_versoes_musica/:musica_id', to: 'versaos#carregar_versoes_musica'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
