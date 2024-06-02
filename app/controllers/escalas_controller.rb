@@ -1,9 +1,10 @@
 class EscalasController < ApplicationController
   before_action :set_escala, only: %i[ show edit update destroy ]
+  before_action :set_escala_edit, only: %i[ edit ]
 
   # GET /escalas or /escalas.json
   def index
-    @escalas = Escala.all
+    @escalas = EscalasCollectionDecorator.new(Escala.all)
   end
 
   # GET /escalas/1 or /escalas/1.json
@@ -65,6 +66,10 @@ class EscalasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_escala
+      @escala = EscalasDecorator.new(Escala.find(params[:id]))
+    end
+
+    def set_escala_edit
       @escala = Escala.find(params[:id])
     end
 

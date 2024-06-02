@@ -58,16 +58,17 @@
 
     <div class="col-7 rounded shadow p-3 m-2">
       <% if @escala.musicas.any?%>
-      <td><%= image_tag 'music.png', size: '25', class: '' %> Músicas:</td>
+      <td></td>
       <ul>
-        <% @escala.musicas.each do |musica| %>
-          <table class="table">
-            <thead>
-              <th class="col-4">Música</th>
-              <th class="col-4">Versão</th>
-              <th class="col-4">Link Youtube</th>
-            </thead>
-            <tbody>
+        <table class="table">
+          <thead>
+            <th class="col-4"><%= image_tag 'music.png', size: '25', class: '' %>&nbsp&nbspMúsicas:</th>
+            <th class="col-4"><%= image_tag 'version.png', size: '25', class: '' %>&nbsp&nbspVersão</th>
+            <th class="col-4"><%= image_tag 'youtube.png', size: '25', class: '' %>&nbsp&nbspLink Youtube</th>
+          </thead>
+          <tbody>
+            <% @escala.musicas.each do |musica| %>
+            <tr>
               <td class="col-4">
                 <%= musica.nome %>
               </td>
@@ -77,24 +78,30 @@
               <td class="col-4">
                 <a href="<%= link_versao_da_musica_escala(musica.id, musica.versao) %>"><%= link_versao_da_musica_escala(musica.id, musica.versao) %></a>
               </td>
-            </tbody>
-          </table>
-        <% end %>
+            </tr>
+            <% end %>
+        
       </ul>
     <% else %>
       <tr>Nenhuma música associada a esta escala.</tr>
     <% end %>
 
       <tr>
-        <td>Outros:</td>
-        <%= @escala.outros %>
+        <td class="p-4" colspan="3"></td>
       </tr>
 
       <tr>
-        <td>Obs:</td>
-        <%= @escala.obs %>
+        <td class="fw-bold"><%= image_tag 'other.png', size: '25', class: '' %>&nbsp&nbspOutros:</td>
+        <td><%= @escala.outros %></td>
       </tr>
 
+      <tr>
+        <td class="fw-bold"><%= image_tag 'observe.png', size: '25', class: '' %>&nbsp&nbspObs:</td>
+        <td><%= @escala.obs %></td>
+      </tr>
+
+      </tbody>
+        </table>
       
     </div>
   </div>

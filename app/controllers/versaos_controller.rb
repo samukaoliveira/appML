@@ -25,7 +25,7 @@ class VersaosController < ApplicationController
 
     respond_to do |format|
       if @versao.save
-        format.html { redirect_to versao_url(@versao), notice: "Versao was successfully created." }
+        format.html { redirect_to musica_url(@versao.musica_id), notice: "Versao was successfully created." }
         format.json { render :show, status: :created, location: @versao }
       else
         format.html { render :new, status: :unprocessable_entity }
