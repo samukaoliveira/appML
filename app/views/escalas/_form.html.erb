@@ -91,31 +91,40 @@
         <h5 class="text-center m-4 text-warning">Músicas</h5>
           <div class="m-3">
             <%= form.label :musica1_id, "Música 1", style: "display: block", class: "form-label" %>
-            <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id } %>
+            <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id }, id: "escala_musica1_id" %>
 
-            <%= form.label :_versao_musica1_id, "Versão", style: "display: block" %>
-            <% form.select :_versao_musica1_id, opcoes_de_versao(@escala.musicas.first.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
-            <%= form.select :_versao_musica1_id, [], include_blank: true if controller.action_name == 'new' %>
+            <%= form.label :musica1_versao, "Versão", style: "display: block" %>
+            <% if controller.action_name == 'edit' %>
+              <%= form.select :musica1_versao, opcoes_de_versao(@escala.musicas.first.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica1" %>
+            <% else %>
+              <%= form.select :musica1_versao, [], { include_blank: true }, id: "versao_musica1" %>
+            <% end %>
           </div>
 
           <div class="m-3">
             <%= form.label :musica2_id, "Música 2", style: "display: block", class: "form-label" %>
-            <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id } %>
+            <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id }, id: "escala_musica2_id" %>
 
-            <%= form.label :_versao_musica2_id, "Versão", style: "display: block" %>
-            <%= form.select :_versao_musica2_id, opcoes_de_versao(@escala.musicas.second.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
-            <%= form.select :_versao_musica2_id, [], include_blank: true if controller.action_name == 'new' %>
-
+            <%= form.label :musica2_versao, "Versão", style: "display: block" %>
+            <% if controller.action_name == 'edit' %>
+              <%= form.select :musica2_versao, opcoes_de_versao(@escala.musicas.second.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica2" %>
+            <% else %>
+              <%= form.select :musica2_versao, [], { include_blank: true }, id: "versao_musica2" %>
+            <% end %>
           </div>
 
           <div class="m-3">
             <%= form.label :musica3_id, "Música 3", style: "display: block", class: "form-label" %>
-            <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id } %>
+            <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id }, id: "escala_musica3_id" %>
 
-            <%= form.label :_versao_musica3_id, "Versão", style: "display: block" %>
-            <%= form.select :_versao_musica3_id, opcoes_de_versao(@escala.musicas.third.id).map { |versao| [versao.nome, versao.id] } if controller.action_name == 'edit' %>
-            <%= form.select :_versao_musica3_id, [], include_blank: true if controller.action_name == 'new' %>
+            <%= form.label :musica3_versao, "Versão", style: "display: block" %>
+            <% if controller.action_name == 'edit' %>
+              <%= form.select :musica3_versao, opcoes_de_versao(@escala.musicas.third.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica3" %>
+            <% else %>
+              <%= form.select :musica3_versao, [], { include_blank: true }, id: "versao_musica3" %>
+            <% end %>
           </div>
+
 
           
       <% end %>
@@ -124,28 +133,3 @@
   </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    // Ao mudar a seleção da música
-    $("#musica1_select").change(function() {
-      // Obtém o ID da música selecionada
-      var musicaId = $(this).val();
-
-      // Se a música for selecionada, mostra o select de versões
-      if (musicaId) {
-        $("#versao_musica1_div").show();
-
-        // Carrega dinamicamente as versões correspondentes à música selecionada
-        $.ajax({
-          url: "/carregar_versoes_musica",
-          method: "GET",
-          data: { musica_id: musicaId },
-          dataType: "script"
-        });
-      } else {
-        // Se nenhuma música for selecionada, oculta o select de versões
-        $("#versao_musica1_div").hide();
-      }
-    });
-  });
-</script>

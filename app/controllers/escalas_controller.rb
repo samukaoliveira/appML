@@ -41,17 +41,22 @@ class EscalasController < ApplicationController
 
   # PATCH/PUT /escalas/1 or /escalas/1.json
   def update
+    @escala = Escala.find(params[:id])
+    
     respond_to do |format|
       if @escala.update(escala_params)
-        @escala.musicas << Musica.find(params[:musica_ids]) if params[:musica_ids].present?
-        format.html { redirect_to escala_url(@escala), notice: "Escala was successfully updated." }
+        # Atualizar as associações músicas e versões
+        update_associations
+        
+        format.html { redirect_to @escala, notice: 'Escala was successfully updated.' }
         format.json { render :show, status: :ok, location: @escala }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @escala.errors, status: :unprocessable_entity }
       end
     end
   end
+  
 
   # DELETE /escalas/1 or /escalas/1.json
   def destroy
@@ -76,10 +81,45 @@ class EscalasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def escala_params
       # Aceita os três IDs de música separadamente e os agrupa em um array
-      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :violonista, :guitarrista, :outros, :obs, :musica1_id, :musica2_id, :musica3_id).tap do |whitelisted|
+      params.require(:escala).permit(:data, :hora, :nome, :baterista, :baixista, :tecladista, :vocalista, :violonista, :guitarrista, :outros, :obs, :musica1_id, :musica2_id, :musica3_id, :musica1_versao, :musica2_versao, :musica3_versao).tap do |whitelisted|
         whitelisted[:musica_ids] = [whitelisted.delete(:musica1_id), whitelisted.delete(:musica2_id), whitelisted.delete(:musica3_id)].compact
       end
     end
+
+    # def escala_params
+    #   params.require(:escala).permit(
+    #     :data,
+    #     :hora,
+    #     :nome,
+    #     :outros,
+    #     :obs,
+    #     :baterista,
+    #     :baixista,
+    #     :tecladista,
+    #     :vocalista,
+    #     :violonista,
+    #     :guitarrista,
+    #     escalas_musicas_attributes: [:id, :musica_id, :versao_id, :_destroy]
+    #   )
+    # end
+
+
+    def update_associations
+      # Percorrer os parâmetros de escalas_musicas_attributes e atualizar as associações
+      if escala_params[:escalas_musicas_attributes].present?
+        escala_params[:escalas_musicas_attributes].each do |attributes|
+          if attributes[:id].present?
+            # Atualizar associação existente se tiver ID
+            escala_musica = @escala.escalas_musicas.find(attributes[:id])
+            escala_musica.update(musica_id: attributes[:musica_id], versao_id: attributes[:versao_id])
+          else
+            # Criar nova associação se não tiver ID
+            @escala.escalas_musicas.create(musica_id: attributes[:musica_id], versao_id: attributes[:versao_id])
+          end
+        end
+      end
+    end
+    
     
 
     def processar_musicas(musica1, musica2, musica3)

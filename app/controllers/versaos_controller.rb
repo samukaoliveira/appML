@@ -7,8 +7,10 @@ class VersaosController < ApplicationController
   end
 
 
-  def carregar_versoes_musica(musica_id)
+  def carregar_versoes_musica
+    musica_id = params[:musica_id]
     @versoes = Versao.where(musica_id: musica_id)
+    render json: @versoes
   end
 
   # GET /versaos/1 or /versaos/1.json

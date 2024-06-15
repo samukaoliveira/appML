@@ -8,3 +8,46 @@
   <%= link_to "Show this escala", @escala %> |
   <%= link_to "Back to escalas", escalas_path %>
 </div>
+<script>
+        $(document).ready(function() {
+            function carregarOpcoes(musicaId, selectDestino) {
+                $.ajax({
+                    url: '/carregar_versoes_musica/' + musicaId, // Substitua pela URL do seu endpoint
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log("Dados recebidos: ", data);
+                        var select = $(selectDestino);
+                        select.empty(); // Limpa as opções existentes
+
+                        // Adiciona uma opção padrão
+                        select.append('<option value="">Selecione uma opção</option>');
+
+                        // Percorre os dados e adiciona as novas opções
+                        $.each(data, function(index, item) {
+                            select.append('<option value="' + item.id + '">' + item.nome + '</option>');
+                        });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('Erro ao carregar opções: ' + textStatus);
+                        console.log('Detalhes do erro: ', errorThrown);
+                    }
+                });
+            }
+
+            function configurarCarregamento(selectMusica, selectDestino) {
+                $(selectMusica).change(function() {
+                    var musicaId = $(this).val();
+                    console.log("Música selecionada ID: " + musicaId);
+                    if (musicaId) {
+                        carregarOpcoes(musicaId, selectDestino);
+                    }
+                });
+            }
+
+            // Configurar carregamento para os três seletores de música
+            configurarCarregamento("#escala_musica1_id", "#versao_musica1");
+            configurarCarregamento("#escala_musica2_id", "#versao_musica2");
+            configurarCarregamento("#escala_musica3_id", "#versao_musica3");
+        });
+    </script>
