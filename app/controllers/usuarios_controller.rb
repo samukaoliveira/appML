@@ -57,11 +57,12 @@ class UsuariosController < ApplicationController
     end
   end
 
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_usuario
-      @usuario = Usuario.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_usuario
+    @usuario = Usuario.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
     def usuario_params

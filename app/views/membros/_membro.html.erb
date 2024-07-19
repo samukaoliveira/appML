@@ -1,12 +1,20 @@
 <div id="<%= dom_id membro %>">
-  <p>
-    <strong>Ministerio:</strong>
-    <%= membro.ministerio_id %>
-  </p>
+  <tr>
 
-  <p>
-    <strong>Usuario:</strong>
-    <%= membro.usuario_id %>
-  </p>
+    <td>
+      <%= membro.usuario.nome %>
+    </td>
+    
+    <td>
+      <% membro.usuario.tipo_skills.each do | skill | %>
+      <%= image_tag "#{skill.nome.downcase}.png", size: "25x25", class: "ms-3" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= link_to "Show this membro", membro %>
+    </td>
+
+  </tr>
 
 </div>

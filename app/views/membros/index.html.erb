@@ -1,14 +1,29 @@
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Membros</h1>
+<h1 class="text-center">Membros</h1>
 
-<div id="membros">
-  <% @membros.each do |membro| %>
-    <%= render membro %>
-    <p>
-      <%= link_to "Show this membro", membro %>
-    </p>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="rounded shadow p-3 m-2">
+      <table class="table">
+        <thead>
+          <th class="col-3">Nome</th>
+          <th class="col-6">Funções</th>
+          <th class="col-3">Ações</th>
+        </thead>
+        <div id="membros">
+          <% @membros.each do |membro| %>
+            <%= render membro %>
+            <p>
+              
+            </p>
+          <% end %>
+        </div>
+
+        <%= link_to "New membro", new_membro_path %>
+
+        </tr>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New membro", new_membro_path %>

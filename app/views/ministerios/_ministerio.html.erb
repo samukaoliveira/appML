@@ -23,7 +23,11 @@
     <% ministerio.usuarios.each do | membro | %>
     <tr>
     <td><%= membro.nome %></td>
-    <td><%= membro.tipo_skill.nome %></td>
+    <td>
+      <% membro.tipo_skills.each do | skill | %>
+      <%= skill.nome %>
+      <% end %>
+    </td>
     <td><%= link_to "Editar", membro  %></td>
     </tr>
     <% end %>

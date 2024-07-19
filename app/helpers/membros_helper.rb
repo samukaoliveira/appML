@@ -13,5 +13,10 @@ module MembrosHelper
     def usuarios_que_sao_membros
         Usuario.joins(:ministerios).pluck(:id)
     end
+
+    def skills_membro(membro)
+        @usuario = Usuario.find_by(id: membro.id)
+        @usuario_skills = @usuario.tipo_skills
+    end
       
 end
