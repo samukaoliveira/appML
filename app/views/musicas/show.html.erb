@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 
+      <h3 class="text-center m-3">Detalhes da Música</h3>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-4 rounded shadow p-3 m-2">
-      <h3 class="text-center m-3">Detalhes da Música</h3>
+    <div class="d-flex col-lg-8 col-11 rounded shadow p-1 m-1">
       <table class="table">
         <tr>
           <td><%= image_tag 'music.png', size: '25', class: '' %></td>
@@ -38,33 +38,38 @@
       </table>
     </div>
 
-    <div class="col-7 rounded shadow p-3 m-2">
-      <h3 class="text-center m-3">Versões</h3>
-      <table class="table">
-        
-      <% versoes_da_musica(@musica).each do |versao| %>
-        <tr>
-          <td><%= image_tag 'version.png', size: '25', class: '' %></td>
-          <td class="fw-bold">Nome da versão:</td>
-          <td><%= versao.nome %></td>
-        </tr>
-
-        <tr>
-          <td ><%= image_tag 'youtube.png', size: '25', class: '' %></td>
-          <td class="fw-bold mb-2">Link do Youtube:</td>
-          <td><a href="<%= versao.link_youtube %>"><%= versao.link_youtube %></a></td>
-        </tr>
-        <tr><td colspan="3" class="text-center text-secondary">-----------------------------------------------------------------</td>
-        </tr>
-      <% end %>
-        <div>
-          <%= link_to new_versao_path(musica_id: @musica), class: "d-flex align-items-center" do %>
-            <%= image_tag "plus.png", size: "35", class: "mb-4" %><p class="fs-6 text-decoration-none mb-4">&nbsp&nbspAdicionar Versão</p>
-          <% end %>
-        </div>
-      </table>
-    </div>
+    
   </div>
+  <div class="row justify-content-center">
+    <h3 class="text-center m-3">Versões</h3>
+      <div class="d-flex">
+        <%= link_to new_versao_path(musica_id: @musica), class: "d-flex align-items-center" do %>
+          <%= image_tag "plus.png", size: "35", class: "m-2" %>
+        <% end %>
+      </div>
+    <div class="d-flex col-lg-8 col-11 rounded shadow p-1 m-1">
+        
+        
+        <table class="table d-flex">
+        <% versoes_da_musica(@musica).each do |versao| %>
+          <tr>
+            <td><%= image_tag 'version.png', size: '25', class: '' %></td>
+            <td class="fw-bold">Nome da versão:</td>
+            <td><%= versao.nome %></td>
+          </tr>
+
+          <tr>
+            <td ><%= image_tag 'youtube.png', size: '25', class: '' %></td>
+            <td class="fw-bold mb-2">Link do Youtube:</td>
+            <td><a href="<%= versao.link_youtube %>"><%= versao.link_youtube %></a></td>
+          </tr>
+          <tr><td colspan="3" class="text-center text-secondary">-----------------------------------------------------------------</td>
+          </tr>
+        <% end %>
+          
+        </table>
+      </div>
+    </div>
 </div>
 
 <div class="d-flex justify-content-center">

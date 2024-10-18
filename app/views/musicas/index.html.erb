@@ -3,16 +3,16 @@
 <h2 class="text-center m-4">Musicas</h2>
 
 <div class="container justify-content-center shadow p-2">
-  <div class="d-flex">
-    <div>
-    <%= link_to new_musica_path, class: "d-flex align-items-center" do %>
-      <%= image_tag "plus.png", size: "50", class: "mb-4" %>
+  <div class="d-flex mb-4">
+    <div class="d-flex">
+    <%= link_to new_musica_path, class: "d-flex align-items-center " do %>
+      <%= image_tag "plus.png", size: "50", class: "mr-4" %>
     <% end %>
     </div>
-    <div>
-      <form action="/musicas" method="get"> 
-        <input id="nome" name="nome" type="text" size="20"/> 
-        <button type="submit">Pesquisar</button>
+    <div class="m-2 align-items-end">
+      <form action="/musicas" method="get" class="form-control"> 
+        <input id="nome" name="nome" type="text" size="22" class=""/> 
+        <button type="submit"><%= image_tag "lupa.png", size: "37", class: "" %></button>
       </form>
     </div>
   </div>
