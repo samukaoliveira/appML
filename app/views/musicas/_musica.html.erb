@@ -1,6 +1,6 @@
 <div id="<%= dom_id musica %>">
   <tr>
-    <td><%= link_to musica.nome, musica %></td>
-    <td><%= musica.interprete %></td>
+    <td class="col-8"><%= link_to musica.nome, musica, class: "text-decoration-none" %></td>
+    <td class="col-4"><%= musica.interprete %></td>
   </tr>
 </div>

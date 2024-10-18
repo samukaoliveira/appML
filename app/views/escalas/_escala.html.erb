@@ -9,13 +9,12 @@
         <td><%= nome_musico escala.vocalista %></td>
         <td><%= nome_musico escala.violonista %></td>
         <td><%= nome_musico escala.guitarrista %></td>
-        <td>
           <% if escala.musicas.any?%>
             <% escala.musicas.each do |musica| %>
               <%= musica.nome %><%= ', ' unless musica == escala.musicas.last %> 
-          <% end %>
+            <% end %>
           <% else %>
-            <tr>Nenhuma música associada a esta escala.</tr>
+            <p class="text-danger">Nenhuma música associada a esta escala.</p>
           <% end %>
         </td>
         <td>

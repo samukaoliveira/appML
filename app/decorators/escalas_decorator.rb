@@ -36,11 +36,16 @@ class EscalasDecorator < SimpleDelegator
     def obs
     __getobj__.obs.presence || "-"
     end
+
+    def musicas
+      return __getobj__.musicas if __getobj__.musicas.present? && __getobj__.musicas.any?
+      []    
+    end
   
     # Adicione outros métodos para os atributos que você quer decorar
     def method_missing(method, *args, &block)
       value = __getobj__.send(method, *args, &block)
-      value.presence || "-"
+      value.presence || "-" 
     end
   
     def respond_to_missing?(method, include_private = false)

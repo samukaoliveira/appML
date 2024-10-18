@@ -2,6 +2,12 @@
 
 <h1 class="text-center">Escalas</h1>
 
+<div class="d-flex">
+  <%= link_to new_escala_path, class: "d-flex align-items-center" do %>
+    <%= image_tag "plus.png", size: "50", class: "m-2" %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="rounded shadow p-3 m-2">
@@ -12,38 +18,31 @@
           <td class="fw-bold text-center">Nome</td>
           
           <td class="fw-bold"><%= image_tag 'calendar.png', size: '25', class: '' %>Data</td>
-          
-          <td class="fw-bold "><%= image_tag 'drum-set.png', size: '25', class: '' %>Bat</td>
-          
-          <td class="fw-bold"><%= image_tag 'bass-guitar.png', size: '25', class: '' %>Bai</td>
-         
-          <td class="fw-bold"><%= image_tag 'synthesizer.png', size: '25', class: '' %>Tec</td>
-          
-          <td class="fw-bold"><%= image_tag 'microphone.png', size: '25', class: '' %>Voc</td>
-          
-          <td class="fw-bold"><%= image_tag 'guitar.png', size: '25', class: '' %>Vio</td>
-       
-          <td class="fw-bold"><%= image_tag 'electric-guitar.png', size: '25', class: '' %>Guit</td>
 
           <td class="fw-bold"><%= image_tag 'music.png', size: '25', class: '' %>Músicas</td>
-
-          <td class="fw-bold">Ações</td>
           
         </tr>
       
 
 
-<div id="escalas">
-  <% @escalas.each do |escala| %>
-    <%= render escala %>
-  <% end %>
-</div>
+        <div id="escalas">
+          <% @escalas.each do |escala| %>
+          <tr>
+                  <td><%= link_to escala.nome, escala, class: "text-decoration-none" %></td>
+                  <td><%= escala.data %></td>
+                  <td class="col-lg-5">
+                  <% if escala.musicas.any?%>
+                    <% escala.musicas.each do |musica| %>
+                      <%= musica.nome %><%= ', ' unless musica == escala.musicas.last %>
+                    <% end %>
+                  <% else %>
+                    <p class="text-danger">Nenhuma música associada a esta escala.</p>
+                  <% end %>
+                  </td>
+                  </tr>
+          <% end %>
+        </div>
 
-<div class="d-flex">
-  <%= link_to new_escala_path, class: "d-flex align-items-center" do %>
-    <%= image_tag "plus.png", size: "50", class: "mb-4" %><p class="fs-5 text-decoration-none mb-4">Criar Escala</p>
-  <% end %>
-</div>
 
     </div>
   </div>
