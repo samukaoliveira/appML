@@ -1,12 +1,6 @@
 <div id="<%= dom_id musica %>">
   <tr>
-    <td><%= musica.nome %></td>
+    <td><%= link_to musica.nome, musica %></td>
     <td><%= musica.interprete %></td>
-    <td><%= musica.tom_original %></td>
-    <td><%= musica.ultimo_tom_tocado %></td>
-    <td><%= musica.bmp_original %></td>
-    <td><%= musica.ultimo_bpm_tocado %></td>
-    <td><%= musica.obs %></td>
-    <td><%= link_to "Detalhes", musica %></td>
   </tr>
 </div>

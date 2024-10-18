@@ -1,17 +1,20 @@
 {
-  "name": "app",
-  "private": true,
-  "browserslist": ["defaults"],
+  "name": "AppML",
+  "version": "1.0.0",
+  "description": "Gerenciamento de Escalas para Ministério de Louvor",
+  "main": "/",
+  "repository": "git@github.com:samukaoliveira/appML.git",
+  "author": "Samuel <mucabatera@gmail.com>",
+  "license": "MIT",
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
-    "jquery": "^3.7.1"
+    "bootstrap-icons": "^1.11.3"
   },
   "scripts": {
-    "build:css": "esbuild app/assets/stylesheets/application.css --bundle --minify --outfile=public/assets/application.css",
-    "watch:css": "esbuild app/assets/stylesheets/application.css --bundle --minify --watch --outfile=public/assets/application.css"
-  },
-  "devDependencies": {
-    "esbuild": "^0.20.2"
+    "build:css": "cssbundling-rails build"
   }
 }

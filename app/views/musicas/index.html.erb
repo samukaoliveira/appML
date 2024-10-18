@@ -4,9 +4,17 @@
 
 <div class="container justify-content-center shadow p-2">
   <div class="d-flex">
+    <div>
     <%= link_to new_musica_path, class: "d-flex align-items-center" do %>
-      <%= image_tag "plus.png", size: "50", class: "mb-4" %><p class="fs-5 text-decoration-none mb-4">Adicionar Musica</p>
+      <%= image_tag "plus.png", size: "50", class: "mb-4" %>
     <% end %>
+    </div>
+    <div>
+      <form action="/musicas" method="get"> 
+        <input id="nome" name="nome" type="text" size="20"/> 
+        <button type="submit">Pesquisar</button>
+      </form>
+    </div>
   </div>
   <div class="">
     <table class="table table-striped">
@@ -14,12 +22,6 @@
       <tr>
         <th class="bg-dark text-light">Nome:</th>
         <th class="bg-dark text-light">Interprete:</th>
-        <th class="bg-dark text-light">Tom original:</th>
-        <th class="bg-dark text-light">Último tom tocado:</th>
-        <th class="bg-dark text-light">Bmp original:</th>
-        <th class="bg-dark text-light">Último bpm tocado:</th>
-        <th class="bg-dark text-light">Obs:</th>
-        <th class="bg-dark text-light">Ações</th>
       </tr>
       </thead>
 

@@ -3,6 +3,8 @@ class MusicasController < ApplicationController
 
   # GET /musicas or /musicas.json
   def index
+    @params = params
+    return @musicas = MusicasCollectionDecorator.new(Musica.where("nome ILIKE ? OR interprete ILIKE ?", "%#{@params[:nome]}%", "%#{@params[:nome]}%")) if @params[:nome].present?
     @musicas = MusicasCollectionDecorator.new(Musica.all)
   end
 

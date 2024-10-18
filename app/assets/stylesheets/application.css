@@ -1,38 +1,18 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
 
-
-.menu-item-profile {
-  text-decoration: none;
-  font-weight: 600;
+body {
+  background-color: #f8f9fa;
 }
-
-.menu-item-profile li:hover {
-  background-color: #e4e4e4;
+.app-header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
 }
-
-.input_image_full {
-  width: 100%;
-}
-
-.paleta {
-  background-color: #1089ff;
-  
-}
-
-
-header{
-  width: 93%;
-}
-
-.navbar-brand {
-  color: #0359af;
-}
-
-
-
-.nav-link {
-  color: #4f96dd;
+.app-footer {
+  background-color: #343a40;
+  color: white;
+  padding: 1rem;
 }

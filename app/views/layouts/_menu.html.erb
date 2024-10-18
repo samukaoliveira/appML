@@ -1,45 +1,35 @@
-<div class="container ">    
-  <div class="row mt-3 shadow">  
-    <div class="justify-content-center bg-secondary">
-      <table class="table bg-secondary">
-        <td class="" >
-          <%= link_to root_path, class: "nav-link d-inline" do %>
-            <div>
-              <p class="text-primary text-center fs-1 fw-bold titulos-car"><%= image_tag 'gospel.png', size: '80' %>IEC</i></p>
-              <p class="text-danger text-center mn">Ministério de Louvor</p>
+<!-- Cabeçalho -->
+    <header class="app-header text-center">
+        <h1>Ministério de Louvor - IEC</h1>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <%= link_to "Home", home_path, class:"navbar-brand #{ "active" if current_page?(controller: 'home')}" %>
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <%= link_to "Escalas", escalas_path, class:"nav-link #{ "active" if current_page?(controller: 'escalas')}" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Músicas", musicas_path  , class:"nav-link #{ "active" if current_page?(controller: 'musicas')}" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Membros", membros_path, class:"nav-link #{ "active" if current_page?(controller: 'membros')}" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Skills", tipo_skills_path, class:"nav-link #{ "active" if current_page?(controller: 'tipo_skills')}" %>
+                    </li>
+                    <li>
+                      <%= link_to "Ministérios", ministerios_path, class:"nav-link #{ "active" if current_page?(controller: 'ministerios')}" %>
+                    </li>
+                </ul>
             </div>
-          <% end %>
-
-        </td>
-
-        <td class="" >
-          <%= link_to "Home", home_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'home')}" %>
-        </td>
-
-        <td class="" >
-          <%= link_to "Escalas", escalas_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'escalas')}" %>
-        </td>
-
-        <td class="" >
-          <%= link_to "Músicas", musicas_path, class:"nav-link active d-inline #{ "text-secondary" unless controller.controller_name == 'musicas'}" %>
-        </td>
-
-        <td class="" >
-          <%= link_to "Membros", membros_path, class:"nav-link active d-inline #{ "text-secondary" unless controller.controller_name == 'membros'}" %>
-        </td>
-
-      <%# if @admin.present? %>
-        <td class="" >
-          <%= link_to "Skills", tipo_skills_path, class:"nav-link active #{ "text-secondary" unless controller.controller_name == 'tipo_skills'}" %>
-        </td>
-      <%# end %>
-        <td class="" >
-          <%= link_to "Ministérios", ministerios_path, class:"nav-link d-inline #{ "text-secondary" unless current_page?(controller: 'escalas')}" %>
-        </td>
-       
-      </table>
-      <hr class="fs-5">
-      <%= @admin %>
-    </div>
-  </div>
-</div>
+        </div>
+    </nav>
+    <%= @admin %>
