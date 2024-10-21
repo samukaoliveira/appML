@@ -3,7 +3,7 @@
 <h1 class="text-center">Escala - <%= format_short_date @escala.data %></h1>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-4 rounded shadow p-3 m-2">
+    <div class="d-flex col-lg-4 col-11 rounded shadow p-1 m-1">
       <table class="table">
         
 
@@ -56,59 +56,69 @@
       </table>
     </div>
 
-    <div class="col-7 rounded shadow p-3 m-2">
+    <div class="col-lg-7 col-11 rounded shadow p-1 m-1">
       <% if @escala.musicas.any?%>
-      <td></td>
-      <ul>
-        <table class="table">
-          <thead>
-            <th class="col-4"><%= image_tag 'music.png', size: '25', class: '' %>&nbsp&nbspMúsicas:</th>
-            <th class="col-4"><%= image_tag 'version.png', size: '25', class: '' %>&nbsp&nbspVersão</th>
-            <th class="col-4"><%= image_tag 'youtube.png', size: '25', class: '' %>&nbsp&nbspLink Youtube</th>
-          </thead>
-          <tbody>
-            <% @escala.musicas.each do |musica| %>
-            <tr>
-              <td class="col-4">
-                <%= musica.nome %>
-              </td>
-              <td class="col-4">
-                <%= versao_da_musica_escala(musica.id, musica.versao) %>
-              </td>
-              <td class="col-4">
-                <a href="<%= link_versao_da_musica_escala(musica.id, musica.versao) %>"><%= link_versao_da_musica_escala(musica.id, musica.versao) %></a>
-              </td>
-            </tr>
-            <% end %>
+        <div class="row mt-3">
+            
+          <div class="col-8">
+            <span ><%= image_tag 'music.png', size: '25', class: '' %>&nbsp&nbspMúsicas:</span>
+          </div>
+          <div class="col-4">
+            <span ><%= image_tag 'version.png', size: '25', class: '' %>&nbsp&nbspVersão:</span>
+          </div> 
+        </div>  
+        <div class="row">
+          <span >
+            <hr class="text-center">
+          </span>
+        </div>
+          <% @escala.musicas.each_with_index do |musica, index| %>
+          
+            <div class="row mt-2">
+              <div class="col-8">
+                <span class="m-1 fw-bold">
+                  <%= (index + 1) %>ª&nbsp&nbsp&nbsp<%= musica.nome %>
+                </span>
+              </div>
+              <div class="col-4">
+                <span class="">
+                  <%= versao_da_musica_escala(musica.id, musica.versao) %>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <span >
+                <%= image_tag 'youtube.png', size: '20x20', class: 'm-1' %>
+                <a href="<%= link_versao_da_musica_escala(musica.id, musica.versao) %>" class=""><%= encurta_link(link_versao_da_musica_escala(musica.id, musica.versao)) %></a>
+              </span>
+            </div>
+            <div class="row">
+              <span >
+                <hr class="text-center">
+              </span>
+            </div>
         
-      </ul>
-    <% else %>
-      <tr>Nenhuma música associada a esta escala.</tr>
-    <% end %>
-
-      <tr>
-        <td class="p-4" colspan="3"></td>
-      </tr>
-
-      <tr>
-        <td class="fw-bold"><%= image_tag 'other.png', size: '25', class: '' %>&nbsp&nbspOutros:</td>
-        <td><%= @escala.outros %></td>
-      </tr>
-
-      <tr>
-        <td class="fw-bold"><%= image_tag 'observe.png', size: '25', class: '' %>&nbsp&nbspObs:</td>
-        <td><%= @escala.obs %></td>
-      </tr>
-
-      </tbody>
-        </table>
-      
+          <% end %>
+        
+      <% else %>
+        <span>Nenhuma música associada a esta escala.</span>
+      <% end %>
     </div>
   </div>
-
-
-<div class="d-flex justify-content-center">
-  <%= link_to "Editar escala", edit_escala_path(@escala), class: "btn btn-warning m-2" %>
-  <%= button_to "Deletar escala", @escala, method: :delete, class: "btn btn-danger m-2" %>
-  <%= link_to "Voltar", escalas_path, class: "btn btn-secondary m-2" %>
 </div>
+
+<div class="container d-flex">
+  <div id="outros" class="row rounded shadow p-2 m-2" style="min-height: 170px; min-width: 96%;">
+      <div class="fw-bold"><%= image_tag 'other.png', size: '25', class: '' %>&nbsp&nbspOutros:</div>
+      <div><%= @escala.outros %></div>
+  
+    <div class="fw-bold"><%= image_tag 'observe.png', size: '25', class: '' %>&nbsp&nbspObs:</div>
+    <div><%= @escala.obs %></div>
+  </div>
+</div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Editar escala", edit_escala_path(@escala), class: "btn btn-warning m-2" %>
+    <%= button_to "Deletar escala", @escala, method: :delete, class: "btn btn-danger m-2" %>
+    <%= link_to "Voltar", escalas_path, class: "btn btn-secondary m-2" %>
+  </div>

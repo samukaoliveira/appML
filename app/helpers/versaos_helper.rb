@@ -18,4 +18,8 @@ module VersaosHelper
         versao = Versao.where(musica_id: musica_id, id: versao_id).first
         versao&.link_youtube
     end
+
+    def encurta_link(link)
+        link.sub("https://www.", "") unless link.nil?
+    end
 end
