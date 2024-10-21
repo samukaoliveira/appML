@@ -1,9 +1,11 @@
-<h1>New versao</h1>
+<h1 class="text-center mt-3">Cadastrar nova versão</h1>
 
-<%= render "form", versao: @versao %>
+<div class="col-11 col-lg-7 rounded shadow center p-3 m-3 mt-3 justify-content-center">
+  <%= render "form", versao: @versao %>
+</div>
 
 <br>
 
-<div>
-  <%= link_to "Back to versaos", versaos_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Voltar", @musica, class: "btn btn-secondary m-2" %>
 </div>

@@ -17,21 +17,21 @@
 </div>
 
   <div>
-    <%= form.label :musica_id, style: "display: block" %>
-    <%= form.text_field :musica_id, value: nome_da_musica(params[:musica_id]), disabled: true, class: "disable" %>
+    <%= form.label :musica_id, style: "display: block", class: "mt-3" %>
+    <%= form.text_field :musica_id, value: nome_da_musica(params[:musica_id]), disabled: true, class: "disable form-control" %>
   </div>
 
   <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+    <%= form.label :nome, style: "display: block", class: "mt-3" %>
+    <%= form.text_field :nome, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :link_youtube, style: "display: block" %>
-    <%= form.text_field :link_youtube %>
+    <%= form.label :link_youtube, style: "display: block", class: "mt-3" %>
+    <%= form.text_field :link_youtube, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit "Salvar", class: "btn btn-success" %>
+    <%= form.submit "Salvar", class: "btn btn-success mt-3" %>
   </div>
 <% end %>

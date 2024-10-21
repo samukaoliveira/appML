@@ -19,6 +19,7 @@ class VersaosController < ApplicationController
 
   # GET /versaos/new
   def new
+    @musica = Musica.find(params[:musica_id])
     @versao = Versao.new
   end
 
@@ -32,7 +33,7 @@ class VersaosController < ApplicationController
 
     respond_to do |format|
       if @versao.save
-        format.html { redirect_to musica_url(@versao.musica_id), notice: "Versao was successfully created." }
+        format.html { redirect_to musica_url(@versao.musica_id), notice: "Versão criada com sucesso." }
         format.json { render :show, status: :created, location: @versao }
       else
         format.html { render :new, status: :unprocessable_entity }
