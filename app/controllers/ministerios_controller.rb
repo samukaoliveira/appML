@@ -25,7 +25,7 @@ class MinisteriosController < ApplicationController
 
     respond_to do |format|
       if @ministerio.save
-        format.html { redirect_to ministerio_url(@ministerio), notice: "Ministerio was successfully created." }
+        format.html { redirect_to ministerio_url(@ministerio), notice: "Ministerio criado com sucesso." }
         format.json { render :show, status: :created, location: @ministerio }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MinisteriosController < ApplicationController
   def update
     respond_to do |format|
       if @ministerio.update(ministerio_params)
-        format.html { redirect_to ministerio_url(@ministerio), notice: "Ministerio was successfully updated." }
+        format.html { redirect_to ministerio_url(@ministerio), notice: "Ministerio atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @ministerio }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class MinisteriosController < ApplicationController
     @ministerio.destroy!
 
     respond_to do |format|
-      format.html { redirect_to ministerios_url, notice: "Ministerio was successfully destroyed." }
+      format.html { redirect_to ministerios_url, notice: "Ministerio deletado com sucesso." }
       format.json { head :no_content }
     end
   end

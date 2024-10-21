@@ -20,10 +20,17 @@ class MusicasDecorator < SimpleDelegator
     __getobj__.ultimo_bpm_tocado.presence || "-"
     end
   
-    # Adicione outros métodos para os atributos que você quer decorar
+    def ignored_methods
+      [:errors, :any?, :full_messages]
+    end
+
     def method_missing(method, *args, &block)
-      value = __getobj__.send(method, *args, &block)
-      value.presence || "-"
+      if ignored_methods.include?(method)
+        __getobj__.send(method, *args, &block)
+      else
+        value = __getobj__.send(method, *args, &block)
+        value.presence || "-"
+      end
     end
   
     def respond_to_missing?(method, include_private = false)

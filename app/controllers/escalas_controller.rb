@@ -30,7 +30,7 @@ class EscalasController < ApplicationController
       if @escala.save
         @escala.musicas << Musica.find(params[:musica_ids]) if params[:musica_ids].present?
       
-        format.html { redirect_to escala_url(@escala), notice: "Escala was successfully created." }
+        format.html { redirect_to escala_url(@escala), notice: "Escala criada com sucesso." }
         format.json { render :show, status: :created, location: @escala }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class EscalasController < ApplicationController
         # Atualizar as associações músicas e versões
         update_associations
         
-        format.html { redirect_to @escala, notice: 'Escala was successfully updated.' }
+        format.html { redirect_to @escala, notice: 'Escala atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @escala }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class EscalasController < ApplicationController
     @escala.destroy!
 
     respond_to do |format|
-      format.html { redirect_to escalas_url, notice: "Escala was successfully destroyed." }
+      format.html { redirect_to escalas_url, notice: "Escala deletada com sucesso." }
       format.json { head :no_content }
     end
   end

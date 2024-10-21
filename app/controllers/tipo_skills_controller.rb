@@ -8,6 +8,15 @@ class TipoSkillsController < ApplicationController
 
   # GET /tipo_skills/1 or /tipo_skills/1.json
   def show
+    @usuarios_skills = TipoSkillsUsuario.where(tipo_skill_id: @tipo_skill)
+    @usuarios_skill = @usuarios_skills.map do |usuario|
+      usuario = Usuario.find(usuario.usuario_id)
+      { usuario_id: usuario.id, nome: usuario.nome.presence || "-" }
+    end
+  end
+
+  def carrega_nome_usuarios(id)
+    Usuario.find(id).nome
   end
 
   # GET /tipo_skills/new
@@ -25,7 +34,7 @@ class TipoSkillsController < ApplicationController
 
     respond_to do |format|
       if @tipo_skill.save
-        format.html { redirect_to tipo_skill_url(@tipo_skill), notice: "Tipo skill was successfully created." }
+        format.html { redirect_to tipo_skill_url(@tipo_skill), notice: "Tipo skill criada com sucesso." }
         format.json { render :show, status: :created, location: @tipo_skill }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +47,7 @@ class TipoSkillsController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_skill.update(tipo_skill_params)
-        format.html { redirect_to tipo_skill_url(@tipo_skill), notice: "Tipo skill was successfully updated." }
+        format.html { redirect_to tipo_skill_url(@tipo_skill), notice: "Tipo skill atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @tipo_skill }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +61,7 @@ class TipoSkillsController < ApplicationController
     @tipo_skill.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tipo_skills_url, notice: "Tipo skill was successfully destroyed." }
+      format.html { redirect_to tipo_skills_url, notice: "Tipo skill deletada com sucesso." }
       format.json { head :no_content }
     end
   end

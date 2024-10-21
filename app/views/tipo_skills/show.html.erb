@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @tipo_skill %>
+<p style="color: green" class="text-center"><%= notice %></p>
+<div class="row m-3">
+  <%= render @tipo_skill %>
+</div>
+<div class="row m-3">
+  <% @usuarios_skill.each  do | usuario | %>
+    <span><%= usuario[:nome] %></span>
+    <%= link_to "editar", usuario_path(usuario[:usuario_id]) %>
+  <% end %>
+</div>
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Editar Tipo de Skill", edit_tipo_skill_path(@tipo_skill), class: "btn btn-warning m-2" %>
-  <%= button_to "Deletar Tipo de Skill", @tipo_skill, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Editar", edit_tipo_skill_path(@tipo_skill), class: "btn btn-warning m-2" %>
+  <%= button_to "Deletar", @tipo_skill, method: :delete, class: "btn btn-danger m-2" %>
   <%= link_to "Voltar", tipo_skills_path, class: "btn btn-secondary m-2" %>
 </div>
 

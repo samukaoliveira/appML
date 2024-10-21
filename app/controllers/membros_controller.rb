@@ -26,7 +26,7 @@ class MembrosController < ApplicationController
 
     respond_to do |format|
       if @membro.save
-        format.html { redirect_to membro_url(@membro), notice: "Membro was successfully created." }
+        format.html { redirect_to membro_url(@membro), notice: "Membro criado com sucesso." }
         format.json { render :show, status: :created, location: @membro }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class MembrosController < ApplicationController
   def update
     respond_to do |format|
       if @membro.update(membro_params)
-        format.html { redirect_to membro_url(@membro), notice: "Membro was successfully updated." }
+        format.html { redirect_to membro_url(@membro), notice: "Membro atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @membro }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class MembrosController < ApplicationController
     @membro.destroy!
 
     respond_to do |format|
-      format.html { redirect_to membros_url, notice: "Membro was successfully destroyed." }
+      format.html { redirect_to membros_url, notice: "Membro deletado com sucesso." }
       format.json { head :no_content }
     end
   end

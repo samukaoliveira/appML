@@ -1,13 +1,15 @@
-<h1>Editing musica</h1>
+<h1 class="text-center">Editar Música</h1>
 
-<%= render "form", musica: @musica %>
+<div class="row mt-3">
+  <%= render "form", musica: @musica %>
+</div>
 
 <br>
 <div>
-  <%= link_to "Adicionar Versão", new_musica_versao_path(@musica) %>
+  <%= link_to "Adicionar Versão", new_versao_path(musica_id: @musica) %>
 </div>
 
-<div>
-  <%= link_to "Show this musica", @musica %> |
-  <%= link_to "Back to musicas", musicas_path %>
+<div class="d-flex justify-content-center">
+  <%= button_to "Deletar musica", @musica, method: :delete, class: "btn btn-danger m-2" %>
+  <%= link_to "Voltar", musicas_path, class: "btn btn-secondary m-2" %>
 </div>

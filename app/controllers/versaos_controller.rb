@@ -46,7 +46,7 @@ class VersaosController < ApplicationController
   def update
     respond_to do |format|
       if @versao.update(versao_params)
-        format.html { redirect_to versao_url(@versao), notice: "Versao was successfully updated." }
+        format.html { redirect_to versao_url(@versao), notice: "Versão atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @versao }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class VersaosController < ApplicationController
     @versao.destroy!
 
     respond_to do |format|
-      format.html { redirect_to versaos_url, notice: "Versao was successfully destroyed." }
+      format.html { redirect_to versaos_url, notice: "Versão deletada com sucesso." }
       format.json { head :no_content }
     end
   end

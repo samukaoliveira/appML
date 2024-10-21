@@ -14,7 +14,7 @@
   <div class="container justify-content-center shadow">
     <div class="row p-2">
 
-      <div class="col-lg-5 offset-lg-1 mb-3">
+      <div class="col-lg-5 mb-3">
         <%= form.label :nome, class: "d-flex" %>
         <%= form.text_field :nome, size: 35, class: "form-control" %>
       </div>
@@ -24,7 +24,7 @@
         <%= form.text_field :interprete, size: 35, class: "form-control" %>
       </div>
 
-      <div class="col-lg-2 col-5 offset-lg-1  mb-3">
+      <div class="col-lg-2 col-5 mb-3">
         <%= form.label :tom_original, class: "d-flex" %>
         <%= form.text_field :tom_original, size: 4, class: "form-control" %>
       </div>
@@ -44,14 +44,15 @@
         <%= form.number_field :ultimo_bpm_tocado, size: 4, class: "form-control col-5" %>
       </div>
 
-      <div class="col-lg-11 offset-lg-1  mb-3">
+      <div class="col-lg-11 mb-3">
         <%= form.label :obs, class: "d-flex" %>
         <%= form.text_field :obs, size: 35, class: "form-control" %>
       </div>
-  <div>
-<div>
+
 
       <div class="col-lg-5 offset-lg-1  mb-3">
         <%= form.submit "Salvar", class: "btn btn-success" %>
       </div>
+    </div>
+  </div>
 <% end %>
