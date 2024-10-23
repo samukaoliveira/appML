@@ -6,7 +6,7 @@
     <!-- Navegação -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <%= link_to "Home", home_path, class:"navbar-brand #{ "active" if current_page?(controller: 'home')}" %>
+            <%= link_to "Home", home_path, class:"navbar-brand #{ "active" if request.path == home_path }" %>
         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,19 +14,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <%= link_to "Escalas", escalas_path, class:"nav-link #{ "active" if current_page?(controller: 'escalas')}" %>
+                        <%= link_to "Escalas", escalas_path, class:"nav-link #{ "active" if request.path == escalas_path}" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Músicas", musicas_path  , class:"nav-link #{ "active" if current_page?(controller: 'musicas')}" %>
+                        <%= link_to "Músicas", musicas_path  , class:"nav-link #{ "active" if request.path == musicas_path}" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Membros", membros_path, class:"nav-link #{ "active" if current_page?(controller: 'membros')}" %>
+                        <%= link_to "Membros", membros_path, class:"nav-link #{ "active" if request.path == membros_path}" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "Skills", tipo_skills_path, class:"nav-link #{ "active" if current_page?(controller: 'tipo_skills')}" %>
+                        <%= link_to "Skills", tipo_skills_path, class:"nav-link #{ "active" if request.path == tipo_skills_path}" %>
                     </li>
                     <li>
-                      <%= link_to "Ministérios", ministerios_path, class:"nav-link #{ "active" if current_page?(controller: 'ministerios')}" %>
+                      <%= link_to "Ministérios", ministerios_path, class:"nav-link #{ "active" if request.path == ministerios_path}" %>
+                    </li>
+                    <li>
+                        <%= login_link %>
                     </li>
                 </ul>
             </div>

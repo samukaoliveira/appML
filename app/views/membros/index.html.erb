@@ -6,7 +6,7 @@
 <div class="container rounded shadow p-2">
   <div class="d-flex mb-4">
     <div class="d-flex">
-    <%= link_to new_membro_path, class: "d-flex align-items-center " do %>
+    <%= link_to new_membro_path , class: "d-flex align-items-center " do %>
       <%= image_tag "plus.png", size: "50", class: "m-2" %>
     <% end %>
     </div>
@@ -21,9 +21,8 @@
     <div class="">
       <table class="table">
         <thead>
-          <th class="col-3">Nome</th>
-          <th class="col-6">Funções</th>
-          <th class="col-3">Ações</th>  
+          <th class="col-5">Nome</th>
+          <th class="col-7">Funções</th> 
         </thead>
         <div id="membros">
           <% @membros.each do |membro| %>

@@ -14,13 +14,8 @@
   
 <div style="display: none;">
   <%= form.label :ministerio_id, style: "display: block" %>
-  <%= form.hidden_field :ministerio_id, value: params[:id_ministerio] %>
+  <%= form.hidden_field :ministerio_id, value: @membro.ministerio_id %>
 </div>
-
-  <div>
-    <%= form.label :ministerio_id, style: "display: block" %>
-    <%= form.text_field :ministerio_id, value: id_do_ministerio(params[:id_ministerio]), disabled: true, class: "disable" %>
-  </div>
 
   <div>
     <%= form.label :usuario_id, style: "display: block" %>

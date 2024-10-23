@@ -11,4 +11,9 @@ module ApplicationHelper
     def format_time(time)
         time.strftime("%H:%M")
       end
+
+      def login_link
+        return link_to "Login", new_usuario_session_path if current_usuario.nil?
+        link_to "Logout", destroy_usuario_session_path, method: :delete, class:"nav-link"
+      end
 end

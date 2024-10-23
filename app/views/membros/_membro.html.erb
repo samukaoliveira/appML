@@ -2,17 +2,13 @@
   <tr>
 
     <td>
-      <%= membro.usuario.nome %>
+      <%= link_to membro.usuario.nome, membro, class:"text-decoration-none fs-4" %>
     </td>
     
     <td>
       <% membro.usuario.tipo_skills.each do | skill | %>
-      <%= image_tag "#{skill.nome.downcase}.png", size: "25x25", class: "ms-3" %>
+        <%= image_tag "#{skill.nome.downcase}.png", size: "32x32", class: "ms-3" %>
       <% end %>
-    </td>
-
-    <td>
-      <%= link_to "Show this membro", membro %>
     </td>
 
   </tr>

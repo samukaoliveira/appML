@@ -1,6 +1,8 @@
 
 class MembrosController < ApplicationController
   before_action :set_membro, only: %i[ show edit update destroy ]
+  before_action :authenticate_usuario!
+  before_action :set_ministerio_usuario_atual
 
   # GET /membros or /membros.json
   def index
@@ -9,11 +11,14 @@ class MembrosController < ApplicationController
 
   # GET /membros/1 or /membros/1.json
   def show
+
   end
 
   # GET /membros/new
   def new
     @membro = Membro.new
+    # pry
+    @membro.ministerio_id = @ministerio_id
   end
 
   # GET /membros/1/edit
@@ -64,6 +69,17 @@ class MembrosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_membro
       @membro = Membro.find(params[:id])
+    end
+
+    def set_ministerio_usuario_atual
+      return @ministerio_id = current_usuario.ministerios.ids.first unless current_usuario.ministerios.ids.empty?
+      nenhum_ministerio_cadastrado
+    end
+
+    def nenhum_ministerio_cadastrado
+      respond_to do |format|
+          format.html { redirect_to home_path, alert: "Você não está associado a nenhum ministerio. Contate o administrador." }
+      end
     end
 
     # Only allow a list of trusted parameters through.
