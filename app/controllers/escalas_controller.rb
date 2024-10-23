@@ -4,6 +4,8 @@ class EscalasController < ApplicationController
 
   # GET /escalas or /escalas.json
   def index
+    # @params = params
+    return @escalas = EscalasCollectionDecorator.new(Escala.where("nome ILIKE ? OR data::text ILIKE ?", "%#{params[:nome]}%", "%#{params[:nome]}%")) if params[:nome].present?
     @escalas = EscalasCollectionDecorator.new(Escala.all)
   end
 
