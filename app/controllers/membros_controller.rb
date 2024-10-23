@@ -4,8 +4,7 @@ class MembrosController < ApplicationController
 
   # GET /membros or /membros.json
   def index
-    return @membros = Membro.joins(:usuario).where("usuarios.nome ILIKE ?", "%#{params[:nome]}%") if params[:nome].present?
-    @membros = Membro.all
+    @membros = MembroService.new(params[:nome]).busca_membros
   end
 
   # GET /membros/1 or /membros/1.json
