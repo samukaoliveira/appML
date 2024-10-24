@@ -15,8 +15,8 @@
 
 
   <div class="row justify-content-center">
-    <div class="col-4 rounded shadow p-3">
-        <div class="form-control row border-primary">
+    <div class="col-11 col-lg-4 rounded shadow p-3">
+        <div class="form-control border-primary">
           <h5 class="text-center m-4 text-primary">Informações Básicas</h5>
           <div class="mb-3">
             <%= form.label :nome, style: "display: block", class: "form-label" %>
@@ -45,12 +45,10 @@
             <%= form.text_field :obs, class: "form-control" %>
           </div>
 
-          <div>
-            <%= form.submit class: "btn btn-success m-3" %>
-          </div>
+          
         </div>
     </div>
-    <div class="col-4 rounded shadow p-3">
+    <div class="col-11 col-lg-4 rounded shadow p-3">
         <div class="form-control border-success">
           <h5 class="text-center m-4 text-success">Membros</h5>
           <div class="mb-3">
@@ -86,7 +84,7 @@
 
         </div>
     </div>
-    <div class="col-4 rounded shadow p-3">
+    <div class=" col-11 col-lg-4 rounded shadow p-3">
         <div class="form-control border-warning">  
         <h5 class="text-center m-4 text-warning">Músicas</h5>
           <div class="m-3">
@@ -94,7 +92,7 @@
             <%= form.select :musica1_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.first&.id }, id: "escala_musica1_id" %>
 
             <%= form.label :musica1_versao, "Versão", style: "display: block" %>
-            <% if controller.action_name == 'edit' %>
+            <% if controller.action_name == 'edit' && @escala.musicas.first.present? %>
               <%= form.select :musica1_versao, opcoes_de_versao(@escala.musicas.first.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica1" %>
             <% else %>
               <%= form.select :musica1_versao, [], { include_blank: true }, id: "versao_musica1" %>
@@ -106,7 +104,7 @@
             <%= form.select :musica2_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.second&.id }, id: "escala_musica2_id" %>
 
             <%= form.label :musica2_versao, "Versão", style: "display: block" %>
-            <% if controller.action_name == 'edit' %>
+            <% if controller.action_name == 'edit' && @escala.musicas.second.present? %>
               <%= form.select :musica2_versao, opcoes_de_versao(@escala.musicas.second.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica2" %>
             <% else %>
               <%= form.select :musica2_versao, [], { include_blank: true }, id: "versao_musica2" %>
@@ -118,13 +116,15 @@
             <%= form.select :musica3_id, opcoes_de_musica.map { |musica| [musica.nome, musica.id] }, { selected: @escala.musicas.third&.id }, id: "escala_musica3_id" %>
 
             <%= form.label :musica3_versao, "Versão", style: "display: block" %>
-            <% if controller.action_name == 'edit' %>
+            <% if controller.action_name == 'edit' && @escala.musicas.third.present? %>
               <%= form.select :musica3_versao, opcoes_de_versao(@escala.musicas.third.id).map { |versao| [versao.nome, versao.id] }, {}, id: "versao_musica3" %>
             <% else %>
               <%= form.select :musica3_versao, [], { include_blank: true }, id: "versao_musica3" %>
             <% end %>
           </div>
-
+          <div>
+            <%= form.submit class: "btn btn-success m-3" %>
+          </div>
 
           
       <% end %>
